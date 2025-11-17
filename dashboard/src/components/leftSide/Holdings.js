@@ -1,13 +1,16 @@
+import {holdings} from "../../data/data"
+import "./Holdings.css";
 function Holdings() {
+    console.log(holdings)
     return (<div className="container" style={{paddingTop:"5%"}}>
-        <h2 style={{fontWeight:"100"}} className="mb-3">Holdings(13)</h2>
+        <h2 style={{fontWeight:"100"}} className="mb-3">Holdings({holdings.length})</h2>
   
-        <div className="table-responsive-sm hide-x" style={{marginBottom:"25%"}}>
+        <div className="table-responsive-sm hide-x" style={{marginBottom:"3%"}}>
 
             <table class="table ">
                 <thead>
                     <tr>
-                        <th scope="col"><h6 className="font-200"> Inv.</h6></th>
+                        <th scope="col"><h6 className="font-200"> Inst.</h6></th>
                         <th scope="col"><h6 className="font-200"> Qty</h6></th>
                         <th scope="col"><h6 className="font-200"> Avg.</h6></th>
                         <th scope="col"><h6 className="font-200"> LTP</h6> </th>
@@ -18,7 +21,7 @@ function Holdings() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    {/* <tr>
                         <td><span className="font-100">  Mark </span></td>
                         <td><span className="font-100">  Otto </span></td>
                         <td><span className="font-100">  Otto </span></td>
@@ -28,106 +31,30 @@ function Holdings() {
                         <td><span className="font-100">  @mdo </span></td>
                         <td><span className="font-100">  @mdo </span></td>
                  
-                    </tr>
-                    <tr>
-                        <td><span className="font-100">  Mark </span></td>
-                        <td><span className="font-100">  Otto </span></td>
-                        <td><span className="font-100">  Otto </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                 
-                    </tr>
-                    <tr>
-                        <td><span className="font-100">  Mark </span></td>
-                        <td><span className="font-100">  Otto </span></td>
-                        <td><span className="font-100">  Otto </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                 
-                    </tr>
-                    <tr>
-                        <td><span className="font-100">  Mark </span></td>
-                        <td><span className="font-100">  Otto </span></td>
-                        <td><span className="font-100">  Otto </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                 
-                    </tr>
-                    <tr>
-                        <td><span className="font-100">  Mark </span></td>
-                        <td><span className="font-100">  Otto </span></td>
-                        <td><span className="font-100">  Otto </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                 
-                    </tr>
-                    <tr>
-                        <td><span className="font-100">  Mark </span></td>
-                        <td><span className="font-100">  Otto </span></td>
-                        <td><span className="font-100">  Otto </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                 
-                    </tr>
-                    <tr>
-                        <td><span className="font-100">  Mark </span></td>
-                        <td><span className="font-100">  Otto </span></td>
-                        <td><span className="font-100">  Otto </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                 
-                    </tr>
-                    <tr>
-                        <td><span className="font-100">  Mark </span></td>
-                        <td><span className="font-100">  Otto </span></td>
-                        <td><span className="font-100">  Otto </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                 
-                    </tr>
-                    <tr>
-                        <td><span className="font-100">  Mark </span></td>
-                        <td><span className="font-100">  Otto </span></td>
-                        <td><span className="font-100">  Otto </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                 
-                    </tr>
-                    <tr>
-                        <td><span className="font-100">  Mark </span></td>
-                        <td><span className="font-100">  Otto </span></td>
-                        <td><span className="font-100">  Otto </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                        <td><span className="font-100">  @mdo </span></td>
-                 
-                    </tr>
+                    </tr> */}
+                    {holdings.map((stock, index)=>{
+                        const currVal = stock.price * stock.qty; //the amount you hold
+                        const profit =  currVal - stock.avg*stock.qty;
+                        const isProfit = currVal - stock.avg*stock.qty >=0.0 ;
+                        const profClass = isProfit?"color-green":"color-red";
+                        const dayLoss = stock.isLoss?"color-red":"color-green";
+                        // console.log(stock)
+                        return(
+                            <tr  key={index}>
+                                <td className="holding"><span className="font-100">  {stock.name} </span></td>
+                                <td className="holding"><span className="font-100">  {stock.qty} </span></td>
+                                <td className="holding"><span className="font-100">  {stock.avg.toFixed(2)} </span></td>
+                                <td className="holding"><span className="font-100">  {stock.price.toFixed(2)} </span></td>
+                                <td className="holding"><span className="font-100">  {currVal.toFixed(2)} </span></td>
+                                <td className="holding"><span className={`font-100 ${profClass}`}  >  {profit.toFixed(2)} </span></td>
+                                <td className="holding"><span className={`font-100 ${profClass}`}>  {stock.net} </span></td>
+                                <td className="holding"><span className={`font-100 ${dayLoss}`}>  {stock.day}</span></td>
+                        
+                            </tr>
+
+                        )
+                    })}
+           
 
               
                 </tbody>
