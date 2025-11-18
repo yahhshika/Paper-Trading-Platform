@@ -1,6 +1,5 @@
-import WatchListBottom from "./WatchListBottom";
 import WatchListTop from "./WatchListTop";
-
+import WatchListBottom from "./WatchListBottom";
 function WatchList() {
     return (
     <><WatchListTop/>

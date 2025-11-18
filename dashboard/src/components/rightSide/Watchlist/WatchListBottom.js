@@ -1,10 +1,10 @@
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import "./WatchListBottom.css";
-import { watchlist } from '../../data/data';
-import BuySellModels from './BuyModes/BuySellModals';
+import { watchlist } from '../../../data/data';
+import BuySellModels from "../BuyModes/BuySellModals"
 import { useState } from 'react';
-import { LineChart } from '../graphs/LineChart';
+import {LineChart} from "../../graphs/LineChart"
 
 import HoverEffectHandler from './HoverEffectHandler';
 function WatchListBottom() {

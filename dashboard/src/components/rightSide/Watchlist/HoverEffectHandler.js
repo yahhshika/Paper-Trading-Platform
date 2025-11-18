@@ -1,9 +1,6 @@
 import EqualizerIcon from '@mui/icons-material/Equalizer';
 import {Tooltip, Grow} from "@mui/material";
-import { watchlist } from '../../data/data';
-import { useState } from 'react';
-import MarketOrder from './BuyModes/MarketOrder';
-import LimitOrder from './BuyModes/LimitOrder';
+
 function HoverEffectHandler({id}){
 
     return(<>

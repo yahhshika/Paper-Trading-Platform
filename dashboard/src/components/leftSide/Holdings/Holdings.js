@@ -1,5 +1,5 @@
-import {holdings} from "../../data/data"
-import { DoughnutChart } from "../graphs/Doughnut";
+import { holdings } from "../../../data/data";
+import {DoughnutChart} from  "../../graphs/Doughnut"
 import "./Holdings.css";
 function Holdings() {
     // console.log(holdings)
@@ -64,7 +64,7 @@ function Holdings() {
                         const dayLoss = stock.isLoss?"color-red":"color-green";
                         // console.log(stock)
                         return(
-                            <tr  key={index}>
+                            <tr  key={index} onClick={()=>{console.log("clicked")}}>
                                 <td className="holding"><span className="font-100">  {stock.name} </span></td>
                                 <td className="holding"><span className="font-100">  {stock.qty} </span></td>
                                 <td className="holding"><span className="font-100">  {stock.avg.toFixed(2)} </span></td>

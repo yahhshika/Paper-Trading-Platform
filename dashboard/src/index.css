@@ -46,3 +46,6 @@ code {
 .color-xxlight{
   color:rgb(176 176 176) !important;
 }
+.cursor-pointer{
+  cursor: pointer;
+}

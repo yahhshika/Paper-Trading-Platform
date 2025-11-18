@@ -54,6 +54,9 @@ function Topbar() {
             <li className="nav-item">
               <Link className={`nav-link ${isActive("/orders") ? "color-red" : ""}`} to="/orders" onClick={closeOffcanvas}>Orders</Link>
             </li>
+            <li className="nav-item">
+              <Link className={`nav-link ${isActive("/reports") ? "color-red" : ""}`} to="/report" onClick={closeOffcanvas}>Reports</Link>
+            </li>
 
             <li className="nav-item dropdown">
               <Link className="nav-link dropdown-toggle border p-2 rounded" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ width: "fit-content" }}>

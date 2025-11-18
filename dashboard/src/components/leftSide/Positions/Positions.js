@@ -1,4 +1,4 @@
-import { positions } from "../../data/data";
+import { positions } from "../../../data/data";
 import "./Positions.css";
 function Positions() {
     return ( <div className="container" style={{paddingTop:"5%"}}>
