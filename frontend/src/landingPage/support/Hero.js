@@ -11,8 +11,10 @@ function Hero() {
     <div
       style={{
         width: "100%",
-        backgroundImage:
-          "url('https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1400&q=80')",
+
+        backgroundImage: `
+  linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+  url('https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1400&q=80')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         padding: "80px 20px",

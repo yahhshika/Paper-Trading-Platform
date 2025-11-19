@@ -66,7 +66,7 @@ function Navbar() {
                 </Link>
               </li>
 
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link
                   className="nav-link active"
                   to="/pricing"
@@ -74,7 +74,7 @@ function Navbar() {
                 >
                   Pricing
                 </Link>
-              </li>
+              </li> */}
 
               <li className="nav-item">
                 <Link
@@ -112,7 +112,7 @@ function Navbar() {
               onClick={toggleTheme}
               className="btn btn-outline-secondary ms-2"
             >
-              {theme === "light" ? "Dark" : "Light"}
+              {theme === "light" ? "Light" : "Dark"}
             </button>
           </div>
         </div>
