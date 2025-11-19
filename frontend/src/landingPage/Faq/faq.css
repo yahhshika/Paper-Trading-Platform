@@ -1,0 +1,87 @@
+/* ===== FAQ PAGE CONTAINER ===== */
+.faq-container {
+  width: 100%;
+  font-family: "Inter", sans-serif;
+}
+
+/* ===== STOCK IMAGE BANNER ===== */
+.faq-banner {
+  height: 300px;
+  /* background-image: url("https://img.freepik.com/free-vector/abstract-red-light-lines-pipe-speed-zoom-black-background-technology_1142-8971.jpghttps://images.pond5.com/audio-spectrum-visualiser-background-vj-footage-074284430_iconl.jpeghttps://images.pond5.com/audio-spectrum-visualiser-background-vj-footage-074284430_iconl.jpeghttps://images.pond5.com/audio-spectrum-visualiser-background-vj-footage-074284430_iconl.jpeg"); */
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  color: rgb(35, 121, 206);
+  padding-top: 90px;
+  /* text-shadow: 0px 0px 12px rgba(0,0,0,0.6); */
+}
+
+.faq-banner h1 {
+  font-size: 42px;
+  font-weight: 700;
+}
+
+.faq-banner p {
+  margin-top: 10px;
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+/* ===== FAQ BOX ===== */
+.faq-box {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+
+/* ===== FAQ ITEMS ===== */
+.faq-item {
+  background: white;
+  border-radius: 14px;
+  padding: 20px 25px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+  transition: 0.3s ease;
+}
+
+.faq-item:hover {
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* ===== FAQ QUESTION ROW ===== */
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.faq-question h3 {
+  font-size: 20px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.faq-question span {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+/* ===== FAQ ANSWER ===== */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+  padding-right: 15px;
+}
+
+.faq-answer.open {
+  max-height: 200px;
+  margin-top: 12px;
+}
+
+.faq-answer p {
+  margin: 0;
+  line-height: 1.6;
+  color: #555;
+  font-size: 16px;
+}
