@@ -8,10 +8,16 @@ import SupportPage from "./landingPage/support/SupportPage";
 import AboutPage from "./landingPage/about/AboutPage";
 import Footer from "./landingPage/Footer";
 import PageNotFound from "./landingPage/PageNotFound";
+import Courses from "./landingPage/courses/Courses";
+import Faq from "./landingPage/Faq/faq";
+
+
+
 function App() {
     return ( <>
     <BrowserRouter>
     <Navbar/>
+
     <Routes>
         <Route exact path="/" element={<HomePage/>}/>
         <Route exact path="/about" element={<AboutPage/>}/>
@@ -19,11 +25,16 @@ function App() {
         <Route exact path="/product" element={<ProductPage/>}/>
         <Route exact path="/signup" element={<SignUp/>}/>
         <Route exact path="/support" element={<SupportPage/>}/>
+
+        <Route exact path="/Courses" element={<Courses/>}/>
+         <Route exact path="/FAQ" element={<Faq/>}/>
+
+
         <Route exact path="*" element={<PageNotFound/>}/>
 
     </Routes>
     <Footer/>
-    
+
     </BrowserRouter>
     </> );
 }
