@@ -19,12 +19,12 @@ function UserProfile() {
         <div className="p-2 my-5">
             <div class="card">
                 <div class="card-header">
-                    Username: <span>@johndoe</span>
+                    Username: <span>{user.username}</span>
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">Email : <span>{user.email}</span></h5>
                     <h5 class="card-title">Name : <span>{user.name}</span></h5>
-                    <h5 class="card-title">funnds : <span>&#8377; {user.funds.availableCash}</span></h5>
+                    <h5 class="card-title">Funds : <span>&#8377; {user.funds.availableCash}</span></h5>
                     
                 </div>
                 </div>

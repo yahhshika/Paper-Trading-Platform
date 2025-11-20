@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import Home from './components/Home';
 import {BrowserRouter, Route, Routes} from "react-router-dom"
+import GuideRender from './components/GuideRender';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
    <BrowserRouter>
     <Routes>
+      <Route path="/guide" element={<GuideRender/>}></Route>
       <Route path='/*' element={<Home/>}></Route>
     </Routes>
    </BrowserRouter>

@@ -49,3 +49,11 @@ code {
 .cursor-pointer{
   cursor: pointer;
 }
+.modal-dialog-bottom {
+  margin-top: auto !important;
+  margin-bottom: 20px !important;
+}
+
+.bg-yellow-hover:hover{
+  background-color: yellow !important;
+}

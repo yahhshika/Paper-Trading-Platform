@@ -1,15 +1,15 @@
-function MarketOrder() {
+function MarketOrder({stockToBuy}) {
     return ( 
     <div class="row">
+        <p className="font-200">{(stockToBuy&&stockToBuy.symbol) || ""}</p>
+
         <div class="col">
             <input type="number" class="form-control" placeholder="Qty." aria-label="First name"/>
         </div>
         <div class="col">
-            <input type="number" disabled class="form-control" placeholder="123.45" aria-label="Last name"/>
+            <input type="number" disabled class="form-control" placeholder={(stockToBuy&& stockToBuy.ltp) || 0} aria-label="Last name"/>
         </div>
-        <div class="col">
-            <input type="number" class="form-control" placeholder="Stop Loss" aria-label="Last name"/>
-        </div>
+
     </div> );
 }
 

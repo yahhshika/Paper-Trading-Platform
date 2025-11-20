@@ -5,7 +5,7 @@ import MarketOrder from './MarketOrder';
 import LimitOrder from './LimitOrder';
 import { useState } from 'react';
 
-function BuySellModels() {
+function BuySellModels({stockToBuy}) {
     let [mode, setMode] = useState("marketOrder");
     let handleMode = (newmode)=>{
         setMode(newmode);
@@ -21,11 +21,11 @@ function BuySellModels() {
                 <p class="modal-title fs-5 col text-center" id="exampleModalLabel" onClick={()=>{handleMode("limitOrder")}} style={{borderBottom:mode==="limitOrder"?"0.75px solid #5f5f5fff":"", backgroundColor:mode==="limitOrder"?"#f2f2f2":""}}>Limit Order</p>
             </div>
             <div class="modal-body">
-                {mode==="marketOrder"? <MarketOrder/>:<LimitOrder/>}
+                {mode==="marketOrder"? <MarketOrder stockToBuy={stockToBuy} />:<LimitOrder stockToBuy={stockToBuy}/>}
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary">Buy</button>
             </div>
             </div>
         </div>

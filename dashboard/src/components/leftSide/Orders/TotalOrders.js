@@ -1,6 +1,7 @@
-import { orders } from "../../../data/data";
-function TotalOrders() {
-    let totalOrders = orders.filter(ord=>ord["status"]!=="open");
+import OrdersContext from "../../../contexts/OrdersContext/OrdersContext";
+import { useContext } from "react";function TotalOrders() {
+    let {allOrders} = useContext(OrdersContext);
+    let orders = allOrders.filter(order=>order["status"]!=="open")
     return (<>
     <div className="table-responsive-sm hide-x" style={{marginBottom:"3%"}}>
         
@@ -21,7 +22,7 @@ function TotalOrders() {
             </thead>
             <tbody>
 
-                {totalOrders.map((order, index)=>{
+                {orders.map((order, index)=>{
             
                     return(
                         <tr  key={index}>

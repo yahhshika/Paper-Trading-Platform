@@ -4,7 +4,9 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useState } from 'react';
 import UserContext from '../../../contexts/UserContext/UserContext';
 import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 function EditProfile() {
+    let navigate = useNavigate();
     let {user, editUserInfo} = useContext(UserContext);
     let [userCredential, setUserCredentials] = useState({username:user.username, email:user.email, name:user.name, funds:{availableCash: user.funds.availableCash}});
     let handleOnChange = (event)=>{
@@ -21,13 +23,14 @@ function EditProfile() {
 
         }
         setUserCredentials(prev=>{
-            return {...prev, name:value}
+            return {...prev, [name]:value}
         })
     }
 
     let handleOnSubmit = (event)=>{
         event.preventDefault();
         editUserInfo(userCredential);
+        navigate('/userprofile')
 
     }
     return ( 
@@ -55,7 +58,7 @@ function EditProfile() {
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Funds (in &#8377; )</label>
-                <input type="number" class="form-control" id="exampleFormControlTextarea1" rows="3" name='funds' value={userCredential.funds.availableCash} onChange={handleOnChange}></input>
+                <input type="number" class="form-control" id="exampleFormControlTextarea1" rows="3" name='availableCash' value={userCredential.funds.availableCash} onChange={handleOnChange}></input>
             </div>
             <button type='submit' className='btn btn-outline-success'>Submit</button>
         </form>
