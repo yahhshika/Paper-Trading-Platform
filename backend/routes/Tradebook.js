@@ -8,4 +8,6 @@ router.get("/",(req,res)=>{
     res.send("root is working")
 })
 
+// Symbol, side:["BUY", "SELL"], qty, price, tradeTpe:["market", "limit"]
+
 module.exports = router;
