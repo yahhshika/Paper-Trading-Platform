@@ -1,4 +1,11 @@
-function Pledge() {
+import { useState } from "react";
+import UserContext from "../../../contexts/UserContext/UserContext";
+function Pledge({pledgeAmt, setPledgeAmt}) {
+  let [ischecked, setChecked]= useState(false);
+  let onChangeHandler = (event)=>{
+    setChecked(!ischecked);
+  }
+
     return ( <>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-">
@@ -9,13 +16,13 @@ function Pledge() {
       </div>
       <div class="modal-body">
         <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="switchCheckChecked" />
+            <input class="form-check-input" onChange={onChangeHandler} type="checkbox" checked={ischecked} role="switch" id="switchCheckChecked" />
             <label class="form-check-label" for="switchCheckChecked">Confirm Pledge</label>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" >Save changes</button>
       </div>
     </div>
   </div>

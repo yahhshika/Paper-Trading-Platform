@@ -7,19 +7,33 @@ function UserState({children}) {
     let editUserInfo= (userData)=>{
         // console.log(userData)
         setUser(prev=>{
-            return {...prev, name:userData.name, username:userData.username, email:userData.email, funds:{...prev.funds,availableCash:userData.funds.availableCash} }
+            console.log("editing user info")
+            console.log("edit user prev: ", prev)
+            return {...prev, name:userData.name, username:userData.username, email:userData.email }
         })
     }
-    let addFunds=(newavailableCash)=>{
+    let addFunds=(addOnCash)=>{
+        console.log("addOnCash:", addOnCash)
         setUser(prev=>{
-            let finalfunds = Number(prev.funds.availableCash) + Number(newavailableCash)
-            return {...prev, funds:{...prev.funds, availableCash: finalfunds.toFixed(2)}}
+            console.log("add funds prev: ", prev)
+            let finalfunds = Number(prev.funds.availableCash) + Number(addOnCash)
+            console.log("finalfunds:" + finalfunds)
+            return {...prev, funds:{...prev.funds, availableCash: finalfunds}}
         })
     }
+    let removeFunds=(removeCash)=>{
+        setUser(prev=>{
+            console.log("remove funds prev: ", prev)
+
+            let finalfunds = Number(prev.funds.availableCash) - Number(removeCash)
+            return {...prev, funds:{...prev.funds, availableCash: finalfunds}}
+        })
+    }
+
     return ( <>
-    
+     
     {console.log(user)}
-    <UserContext.Provider value={{user, setUser, editUserInfo, addFunds}}>
+    <UserContext.Provider value={{user, setUser, editUserInfo, addFunds, removeFunds}}>
         {children}
     </UserContext.Provider>
     </> );

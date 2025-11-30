@@ -1,19 +1,49 @@
 import UserContext from "../../../contexts/UserContext/UserContext";
 import { useContext, useState, useRef } from "react";
-
+import TransactionContext from "../../../contexts/TransactionsContext/TransactionContext";
+import { v4 as uuidv4 } from 'uuid';
 function FundsUpper() {
+    let {addNewTransaction} = useContext(TransactionContext);
     let ref1 = useRef();
-    let {user, addFunds} = useContext(UserContext);
-    let [funds, setFunds] = useState(0)
+    let ref2 = useRef();
+
+    let {user, addFunds, removeFunds} = useContext(UserContext);
+    let [fundsData, setFundsData] = useState({funds: 0, remarks:""})
     let onChangeHandler = (event)=>{
-        setFunds(event.target.value);
+        setFundsData(prev=>{
+            return {...prev, [event.target.name]:event.target.value}
+        });
     }
 
-    let onSubmitHandler = (event)=>{
+    let onSubmitHandlerAddFunds = (event)=>{
         event.preventDefault();
-        addFunds(funds);
-        setFunds(0);
+        addFunds(fundsData.funds);
+        setFundsData({funds: 0, remarks:""});
+        addNewTransaction({
+            id: "TXN2010",
+            date: Date.now(),
+            type: "funds_added",
+            amount: fundsData.funds,
+            status: "successful",
+            refNo: uuidv4(),
+            remarks: fundsData.remarks,
+        })
         ref1.current.click();
+    }
+    let onSubmitHandlerRemoveFunds = (event)=>{
+        event.preventDefault();
+        removeFunds(fundsData.funds);
+        setFundsData({funds: 0, remarks:""});
+        addNewTransaction({
+            id: "TXN2010",
+            date: Date.now(),
+            type: "withdrawal",
+            amount: fundsData.funds,
+            status: "successful",
+            refNo: uuidv4(),
+            remarks: fundsData.remarks,
+        })
+        ref2.current.click();
     }
 
     return (<div className="container border p-2">
@@ -32,26 +62,57 @@ function FundsUpper() {
         </div>
         <div class="d-grid gap-2 d-md-block mt-5">
             <button class="btn btn-outline-success me-2" data-bs-toggle="modal" data-bs-target="#addfundsModal" type="button">Add Funds</button>
-            <button class="btn btn-outline-secondary" type="button">Withdraw Funds</button>
+            <button class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#removefundsModal"  type="button">Withdraw Funds</button>
         </div>
 
-        {/* Modal */}
+        {/* Modal: add Funds */}
         <div class="modal fade" id="addfundsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Add Funds</h1>
-                <button type="button" ref={ref1} class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button"  class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form onSubmit={onSubmitHandler}>
+                <form onSubmit={onSubmitHandlerAddFunds}>
                     <div class="mb-3">
                         <label for="morefunds" class="form-label">Add More Funds</label>
-                        <input type="number" class="form-control" id="morefunds" value={funds} onChange={onChangeHandler} aria-describedby="emailHelp"/>
+                        <input type="number" class="form-control" id="morefunds" value={fundsData.funds} name="funds" onChange={onChangeHandler} aria-describedby="emailHelp"/>
+
+                        <label for="morefundsremarks" class="form-label">Remarks</label>
+                        <input type="text" class="form-control" name="remarks"  id="morefundsremarks" value={fundsData.remarks} onChange={onChangeHandler} aria-describedby="emailHelp"/>
                      
                     </div>
                    
                     <button type="submit" class="btn btn-primary">Add Funds</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" ref={ref1}>Close</button>
+            </div>
+            </div>
+        </div>
+        </div>
+        {/* Modal: remove funds */}
+        <div class="modal fade" id="removefundsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Withdraw Funds</h1>
+                <button type="button" ref={ref2} class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form onSubmit={onSubmitHandlerRemoveFunds}>
+                    <div class="mb-3">
+                        <label for="morefunds" class="form-label">Withdraw Funds</label>
+                        <input type="number" class="form-control" id="morefunds" value={fundsData.funds} name="funds" onChange={onChangeHandler} aria-describedby="emailHelp"/>
+
+                        <label for="morefundsremarks" class="form-label">Withdraw Funds</label>
+                        <input type="text" class="form-control" id="morefundsremarks" value={fundsData.remarks} name="remarks" onChange={onChangeHandler} aria-describedby="emailHelp"/>
+                     
+                    </div>
+                   
+                    <button type="submit" class="btn btn-primary">Withdraw</button>
                 </form>
             </div>
             <div class="modal-footer">

@@ -5,28 +5,35 @@ import UserState from "../contexts/UserContext/UserState";
 import MarketDataState from "../contexts/MarketDataContext/MarketDataState";
 import AllStockState from "../contexts/AllStocksContext/AllStocksState";
 import OrdersState from "../contexts/OrdersContext/OrdersState";
+import UserAndOrderCombinedStateProvider from "../contexts/CombinedContexts/UserAndOrderCombined/UserAndOrderCombinedProviderState";
+import UserAndOrderHandler from "../contexts/CombinedContextHandlers/UserAndOrderHandler";
+import TransactionState from "../contexts/TransactionsContext/TransactionState";
 function Home() {
     return ( <div className="row m-0">
-        <AllStockState>
+        <TransactionState>
+            <UserState>
 
-            <div className="col-lg-7 p-0">
-                <OrdersState>
-
-                    <UserState>
-                        <MarketDataState>
-                            <LeftSide></LeftSide>
-                        </MarketDataState>
-                    </UserState>
-                </OrdersState>
-            </div>
-            <div className="col-lg-5 p-0">
-                <MarketDataState>
-                    <RightSide></RightSide>
-                </MarketDataState>
+                <AllStockState>
                 
-            </div>
+                    <MarketDataState>
+                        <OrdersState>
+                            <div className="col-lg-7 p-0">
 
-        </AllStockState>
+                                
+                                
+                                <LeftSide></LeftSide>
+                                    
+                                
+                            </div>
+                            <div className="col-lg-5 p-0">
+                                <RightSide></RightSide>
+                                
+                            </div>
+                        </OrdersState>
+                    </MarketDataState>
+                </AllStockState>
+            </UserState>
+        </TransactionState>
     </div> );
 }
 

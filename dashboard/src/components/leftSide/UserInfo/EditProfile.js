@@ -8,20 +8,20 @@ import { useNavigate } from 'react-router-dom';
 function EditProfile() {
     let navigate = useNavigate();
     let {user, editUserInfo} = useContext(UserContext);
-    let [userCredential, setUserCredentials] = useState({username:user.username, email:user.email, name:user.name, funds:{availableCash: user.funds.availableCash}});
+    let [userCredential, setUserCredentials] = useState({username:user.username, email:user.email, name:user.name, funds:{availableCash: user.funds.availableCash}, remarks:""});
     let handleOnChange = (event)=>{
         let {name, value} = event.target;
-        if(name==="availableCash"){
-            setUserCredentials(prev=>{
-                return {...prev,
-                    funds:{
-                        availableCash:value
-                    }
-                }
-            })
-            return;
+        // if(name==="availableCash"){
+        //     setUserCredentials(prev=>{
+        //         return {...prev,
+        //             funds:{
+        //                 availableCash:value
+        //             }
+        //         }
+        //     })
+        //     return;
 
-        }
+        // }
         setUserCredentials(prev=>{
             return {...prev, [name]:value}
         })
@@ -58,7 +58,7 @@ function EditProfile() {
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Funds (in &#8377; )</label>
-                <input type="number" class="form-control" id="exampleFormControlTextarea1" rows="3" name='availableCash' value={userCredential.funds.availableCash} onChange={handleOnChange}></input>
+                <input type="number" class="form-control" id="exampleFormControlTextarea1" rows="3" name='availableCash' value={userCredential.funds.availableCash} disabled></input>
             </div>
             <button type='submit' className='btn btn-outline-success'>Submit</button>
         </form>

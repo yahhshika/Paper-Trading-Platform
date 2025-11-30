@@ -12,7 +12,7 @@ function WatchListTop() {
     setCurrSearch("");
 
   }
-    return ( <nav class="navbar">
+  return ( <nav class="navbar">
   <div class="container-fluid">
     <span class="navbar-brand"  style={{color:"#939393ff", fontSize:"100%"}}>9/15</span>
     <form class="d-flex ms-auto" onSubmit={onSubmitHandler} role="search">

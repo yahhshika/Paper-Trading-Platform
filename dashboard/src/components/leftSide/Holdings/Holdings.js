@@ -2,14 +2,37 @@ import { holdings } from "../../../data/data";
 import {DoughnutChart} from  "../../graphs/Doughnut"
 import "./Holdings.css";
 import Pledge from "./PledgeDialog";
+import MarketContext from "../../../contexts/MarketDataContext/MarketDataContext";
+import { useContext, useState } from "react";
+
+import Outerbox from "../../SellBoxes/OuterBox";
 function Holdings() {
+    let [pledgeAmt, setPledgeAmt]= useState(0);
+    let {marketData} = useContext(MarketContext);
+    let holdings = marketData.filter(data=>data.categories.includes("holding"));
+    let totalInvestment = marketData.filter(data=>data.categories.includes("holding")).reduce((sum, curr)=>{
+        return Number(curr.avgPrice)*Number(curr.qty) + sum;
+    },0) 
+    let currValue = marketData.filter(data=>data.categories.includes("holding")).reduce((sum, curr)=>{
+        return Number(curr.ltp)*Number(curr.qty) + sum;
+    },0)
+    let totalPnl = marketData.filter(data=>data.categories.includes("holding")).reduce((sum, curr)=>{
+        return ((Number(curr.ltp) * Number(curr.qty))- (Number(curr.avgPrice)*Number(curr.qty))) + sum;
+    },0)
+    let totalProfitPercent = (totalPnl/currValue) * 100;
+
+
+    let [currOrderToSell, setCurrOrderToSell] = useState(null);
+    let onClickCurrOrderToSellHandler = (order)=>{
+        setCurrOrderToSell(order)
+    }
     // console.log(holdings)
     const data = {
-      labels: holdings.map(holding=>holding["name"]),
+      labels: holdings.map(holding=>holding["symbol"]),
       datasets: [
         {
-          label: '# of Votes',
-          data:holdings.map(holding=>holding["price"]),
+          label: 'ltp',
+          data:holdings.map(holding=>holding["ltp"]),
           backgroundColor: [
             'rgba(255, 99, 132, 0.5)',
             'rgba(54, 162, 235, 0.5)',
@@ -58,23 +81,23 @@ function Holdings() {
                 <tbody>
     
                     {holdings.map((stock, index)=>{
-                        const currVal = stock.price * stock.qty; //the amount you hold
-                        const profit =  currVal - stock.avg*stock.qty;
-                        const isProfit = currVal - stock.avg*stock.qty >=0.0 ;
+                        const currVal = stock.ltp * stock.qty; //the amount you hold
+                        const profit =  currVal - stock.avgPrice*stock.qty;
+                        const isProfit = profit >=0.0 ;
                         const profClass = isProfit?"color-green":"color-red";
-                        const dayLoss = stock.isLoss?"color-red":"color-green";
+                        // const dayLoss = stock.isLoss?"color-red":"color-green";
                         // console.log(stock)
                         return(
-                            <tr className="cursor-pointer" key={index} onClick={()=>{console.log("clicked")}}  data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <td className="holding"><span className="font-100">  {stock.name} </span></td>
+                            <tr className="cursor-pointer" key={index} onClick={()=>{onClickCurrOrderToSellHandler(stock)}} data-bs-toggle="modal" data-bs-target="#sellOrders" >
+                                <td className="holding"><span className="font-100">  {stock.symbol} </span></td>
                                 <td className="holding"><span className="font-100">  {stock.qty} </span></td>
-                                <td className="holding"><span className="font-100">  {stock.avg.toFixed(2)} </span></td>
-                                <td className="holding"><span className="font-100">  {stock.price.toFixed(2)} </span></td>
+                                <td className="holding"><span className="font-100">  {stock.avgPrice.toFixed(2)} </span></td>
+                                <td className="holding"><span className="font-100">  {stock.ltp.toFixed(2)} </span></td>
                                 <td className="holding"><span className="font-100">  {currVal.toFixed(2)} </span></td>
                                 <td className="holding"><span className={`font-100 ${profClass}`}  >  {profit.toFixed(2)} </span></td>
-                                <td className="holding"><span className={`font-100 ${profClass}`}>  {stock.net} </span></td>
+                                {/* <td className="holding"><span className={`font-100 ${profClass}`}>  {stock.net} </span></td>
                                 <td className="holding"><span className={`font-100 ${dayLoss}`}>  {stock.day}</span></td>
-                        
+                         */}
                             </tr>
 
                         )
@@ -84,22 +107,22 @@ function Holdings() {
               
                 </tbody>
             </table>
-            <Pledge></Pledge>
+            <Pledge pledgeAmt={pledgeAmt} setPledgeAmt={setPledgeAmt}></Pledge>
         </div>
         <table class="table table-borderless">
             <thead>
                 <tr>
-                <th scope="col"><h3 style={{display:"inline"}} className="font-200"> 28,875</h3></th>
-                <th scope="col"><h3 style={{display:"inline"}} className="font-200"> 31,475</h3></th>
-                <th scope="col"><h3 style={{display:"inline"}} className="font-200 color-green">1553.40</h3><span className="font-200 color-green">(+5.20%)</span></th>
+                <th scope="col"><h3 style={{display:"inline"}} className="font-200">{totalInvestment && totalInvestment.toFixed(2)}</h3></th>
+                <th scope="col"><h3 style={{display:"inline"}} className="font-200">{currValue && currValue.toFixed()} </h3></th>
+                <th scope="col"><h3 style={{display:"inline"}} className="font-200 color-green">{totalPnl && totalPnl.toFixed(2)}</h3><span className="font-200 color-green">({totalProfitPercent && totalProfitPercent.toFixed(2)}%)</span></th>
              
                 </tr>
             </thead>
             <tbody>
 
                 <tr className="border-none">
-                <td className="pt-0 color-xlight">55</td>
-                <td className="pt-0 color-xlight">95</td>
+                <td className="pt-0 color-xlight">{holdings.length}</td>
+                <td className="pt-0 color-xlight">{holdings.length}</td>
                 <td></td>
                 </tr>
 
@@ -111,6 +134,7 @@ function Holdings() {
                 
             </tbody>
         </table>
+        <Outerbox source={"holding"} order={currOrderToSell}></Outerbox>
 
         
     </div>);

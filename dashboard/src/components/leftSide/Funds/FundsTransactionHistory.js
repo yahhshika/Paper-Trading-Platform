@@ -1,6 +1,9 @@
 import { transactionHistory } from "../../../data/data";
 import "./Funds.css"
+import TransactionContext from "../../../contexts/TransactionsContext/TransactionContext";
+import { useContext } from "react";
 function FundsTransactionHistory() {
+    let {transactions} = useContext(TransactionContext);
     return ( <>
     <div className="table-responsive-sm hide-x" style={{marginBottom:"3%"}}>
 
@@ -17,16 +20,16 @@ function FundsTransactionHistory() {
                 </thead>
                 <tbody>
     
-                    {transactionHistory.slice(0, 10).map((stock, index)=>{
+                    {transactions.slice(0, 10).map((transaction, index)=>{
               
                         return(
                             <tr  key={index}>
-                                <td className="funds"><span className="font-100 " >{stock.date}  </span></td>
-                                <td className="funds"><span className="font-100 " > {stock.type}</span></td>
-                                <td className="funds"><span className="font-100 " >{stock.amount}  </span></td>
-                                <td className="funds"><span className="font-100 " > {stock.status} </span></td>
-                                <td className="funds"><span className="font-100 " >{stock.refNo}  </span></td>
-                                <td className="funds"><span className="font-100 " ><i>{stock.remarks}</i>  </span></td>
+                                <td className="funds"><span className="font-100 " >{transaction.date}  </span></td>
+                                <td className="funds"><span className="font-100 " > {transaction.type}</span></td>
+                                <td className="funds"><span className="font-100 " >{transaction.amount}  </span></td>
+                                <td className="funds"><span className="font-100 " > {transaction.status} </span></td>
+                                <td className="funds"><span className="font-100 " >{transaction.refNo}  </span></td>
+                                <td className="funds"><span className="font-100 " ><i>{transaction.remarks}</i>  </span></td>
                                
                         
                             </tr>

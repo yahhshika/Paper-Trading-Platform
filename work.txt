@@ -1,1 +1,7 @@
 watchlist: when stock not found error
+
+
+in backend: check users balance before adding to positions,
+in backend: on adding and deleting from holdings and positions make sure you change funnds of the user.,
+in backend: on cancelling any open order, it must appear in total order.
+

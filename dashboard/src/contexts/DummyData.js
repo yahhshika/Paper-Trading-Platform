@@ -5,8 +5,8 @@ export const initialUserState = {
   email: "johndoe@gmail.com",
 
   funds: {
-    availableCash: 7489.44,
-    collateral: 1234.5,
+    availableCash: 500000,
+    collateral: 1000,
     currency: "INR",
   },
 
@@ -51,133 +51,227 @@ export const initialUserState = {
   ],
 };
 
+
+// handles holdings, positions, watchlist
 export const dummyMarketData = [
-  // ----------------- HOLDINGS -----------------
   {
+    orderId: "ORD1001",
+    source: "holding",
     symbol: "TCS",
     company: "Tata Consultancy Services",
     ltp: 3985.20,
     avgPrice: 3820.00,
-    quantity: 4,
+    qty: 4,
     categories: ["holding"],
-    dayChange: +45.20,
-    dayChangePercent: +1.15,
-    pnl: (3985.20 - 3820.00) * 4, // +660.8
+    dayChange: 45.20,
+    dayChangePercent: 1.15,
+    pnl: (3985.20 - 3820.00) * 4
   },
 
   {
+    orderId: "ORD1002",
+    source: "holding",
     symbol: "RELIANCE",
     company: "Reliance Industries Ltd",
-    ltp: 2528.10,
+    ltp: 2421.10,
     avgPrice: 2400.00,
-    quantity: 3,
+    qty: 3,
     categories: ["holding"],
-    dayChange: -12.30,
-    dayChangePercent: -0.48,
-    pnl: (2528.10 - 2400.00) * 3, // +384.3
+    dayChange: 5.30,
+    dayChangePercent: 0.22,
+    pnl: (2421.10 - 2400.00) * 3
   },
 
   {
+    orderId: "ORD1003",
+    source: "holding",
     symbol: "HDFCBANK",
     company: "HDFC Bank Ltd",
-    ltp: 1520.45,
+    ltp: 1623.80,
     avgPrice: 1588.00,
-    quantity: 5,
+    qty: 5,
     categories: ["holding"],
-    dayChange: +8.75,
-    dayChangePercent: +0.58,
-    pnl: (1520.45 - 1588.00) * 5, // -338 approx
+    dayChange: 8.90,
+    dayChangePercent: 0.55,
+    pnl: (1623.80 - 1588.00) * 5
   },
 
-  // ----------------- POSITIONS (Intraday/overnight trades) -----------------
   {
+    orderId: "ORD1004",
+    source: "position",
     symbol: "INFY",
     company: "Infosys Ltd",
-    ltp: 1480.60,
+    ltp: 1548.60,
     avgPrice: 1505.00,
-    quantity: 20,
+    qty: 20,
     categories: ["position"],
-    dayChange: -6.50,
-    dayChangePercent: -0.44,
-    pnl: (1480.60 - 1505.00) * 20, // -488
+    dayChange: -12.40,
+    dayChangePercent: -0.79,
+    pnl: (1548.60 - 1505.00) * 20
   },
 
   {
+    orderId: "ORD1005",
+    source: "position",
     symbol: "ICICIBANK",
     company: "ICICI Bank Ltd",
-    ltp: 1022.35,
+    ltp: 974.10,
     avgPrice: 1010.00,
-    quantity: 10,
+    qty: 10,
     categories: ["position"],
-    dayChange: +9.10,
-    dayChangePercent: +0.90,
-    pnl: (1022.35 - 1010.00) * 10, // +123.5
+    dayChange: 6.10,
+    dayChangePercent: 0.63,
+    pnl: (974.10 - 1010.00) * 10
   },
 
-  // ----------------- WATCHLIST ONLY -----------------
   {
+    orderId: "ORD1006",
+    source: "watchlist",
     symbol: "SBIN",
     company: "State Bank of India",
-    ltp: 675.80,
-    quantity: 0,
+    ltp: 643.20,
+    qty: 0,
     avgPrice: null,
     categories: ["watchlist"],
-    dayChange: +2.10,
-    dayChangePercent: +0.31,
-    pnl: null,
+    dayChange: -3.50,
+    dayChangePercent: -0.54,
+    pnl: null
   },
 
   {
+    orderId: "ORD1007",
+    source: "watchlist",
     symbol: "HCLTECH",
     company: "HCL Technologies Ltd",
-    ltp: 1445.60,
-    quantity: 0,
+    ltp: 1474.50,
+    qty: 0,
     avgPrice: null,
     categories: ["watchlist"],
-    dayChange: -5.25,
-    dayChangePercent: -0.36,
-    pnl: null,
+    dayChange: 12.20,
+    dayChangePercent: 0.83,
+    pnl: null
   },
 
   {
+    orderId: "ORD1008",
+    source: "watchlist",
     symbol: "ASIANPAINT",
     company: "Asian Paints Ltd",
-    ltp: 3120.10,
-    quantity: 0,
+    ltp: 3088.20,
+    qty: 0,
     avgPrice: null,
     categories: ["watchlist"],
-    dayChange: +18.35,
-    dayChangePercent: +0.59,
-    pnl: null,
+    dayChange: 22.10,
+    dayChangePercent: 0.72,
+    pnl: null
   },
 
-  // ----------------- MIXED: Appears in BOTH holding + watchlist -----------------
   {
+    orderId: "ORD1009",
+    source: "holding",
     symbol: "MARUTI",
     company: "Maruti Suzuki India Ltd",
-    ltp: 10785.40,
+    ltp: 11548.30,
     avgPrice: 10500.00,
-    quantity: 1,
+    qty: 1,
     categories: ["holding", "watchlist"],
-    dayChange: +52.40,
-    dayChangePercent: +0.48,
-    pnl: (10785.40 - 10500) * 1, // +285.4
+    dayChange: 125.10,
+    dayChangePercent: 1.09,
+    pnl: (11548.30 - 10500.00)
   },
 
-  // ----------------- MIXED: position + watchlist -----------------
   {
+    orderId: "ORD1010",
+    source: "position",
     symbol: "AXISBANK",
     company: "Axis Bank Ltd",
-    ltp: 1123.90,
+    ltp: 1032.10,
     avgPrice: 1135.50,
-    quantity: 8,
+    qty: 8,
     categories: ["position", "watchlist"],
-    dayChange: +4.20,
-    dayChangePercent: +0.37,
-    pnl: (1123.90 - 1135.50) * 8, // -92.8
+    dayChange: 11.60,
+    dayChangePercent: 1.14,
+    pnl: (1032.10 - 1135.50) * 8
   },
+
+  // ✅ EXECUTED ORDER MOVED WITH SAME ID
+  {
+    orderId: "ORD3002",
+    source: "position",
+    symbol: "INFY",
+    company: "Infosys Ltd",
+    ltp: 1548.60,
+    avgPrice: 1548.60,
+    qty: 5,
+    categories: ["position"],
+    dayChange: -12.40,
+    dayChangePercent: -0.79,
+    pnl: 0
+  },
+
+  {
+    orderId: "ORD3003",
+    source: "holding",
+    symbol: "SBIN",
+    company: "State Bank of India",
+    ltp: 643.20,
+    avgPrice: 643.20,
+    qty: 12,
+    categories: ["holding"],
+    dayChange: -3.50,
+    dayChangePercent: -0.54,
+    pnl: 0
+  },
+  // Executed: ORD2010 → BUY COALINDIA → HOLDING
+{
+  orderId: "ORD2010",
+  source: "holding",
+  symbol: "COALINDIA",
+  company: "Coal India",
+  ltp: 390.75,
+  avgPrice: 390.75,
+  qty: 20,
+  categories: ["holding"],
+  dayChange: -4.25,
+  dayChangePercent: -1.07,
+  pnl: 0
+},
+
+// Executed: ORD2011 → BUY ICICIBANK → HOLDING
+{
+  orderId: "ORD2011",
+  source: "holding",
+  symbol: "ICICIBANK",
+  company: "ICICI Bank",
+  ltp: 974.10,
+  avgPrice: 970,
+  qty: 10,
+  categories: ["holding"],
+  dayChange: 6.10,
+  dayChangePercent: 0.63,
+  pnl: (974.10 - 970) * 10
+},
+
+// Executed: ORD2012 → SELL HCLTECH → POSITION
+{
+  orderId: "ORD2012",
+  source: "position",
+  symbol: "HCLTECH",
+  company: "HCL Technologies",
+  ltp: 1474.50,
+  avgPrice: 1474.50,
+  qty: 4,
+  categories: ["position"],
+  dayChange: 12.20,
+  dayChangePercent: 0.83,
+  pnl: 0
+}
+
 ];
 
+
+
+//handles the umbrella stock vision:
 
 export const allStocksData = [
   { symbol: "TCS", company: "Tata Consultancy Services", ltp: 3985.20, dayChange: +45.20, dayChangePercent: +1.15 },
@@ -236,18 +330,20 @@ export const allStocksData = [
   { symbol: "BEL", company: "Bharat Electronics", ltp: 192.90, dayChange: +1.70, dayChangePercent: +0.89 }
 ];
 
+
+// orders placed by user
 export const ordersInitData = [
   // -------------------
   // OPEN ORDERS
   // -------------------
   {
     userId: "U12345",
-    orderId: "ORD3001",
+    orderId: "ORD3001", 
     symbol: "TCS",
     side: "BUY",
     orderType: "LIMIT",
     qty: 10,
-    price: 3670,                   // Limit price
+    price: 3670,
     status: "open",
     timestamp: "2025-01-25 10:15:32"
   },
@@ -258,12 +354,46 @@ export const ordersInitData = [
     side: "SELL",
     orderType: "LIMIT",
     qty: 5,
-    price: 1530,                   // Limit price
-    status: "open",
+    price: 1530,
+    status: "executed",
     timestamp: "2025-01-25 11:42:10"
   },
 
-  // ✔ MARKET ORDER OPEN (only in low liquidity / simulation)
+  // ✅ NEW OPEN ORDERS
+  {
+    userId: "U12345",
+    orderId: "ORD3007",
+    symbol: "AXISBANK",
+    side: "BUY",
+    orderType: "LIMIT",
+    qty: 8,
+    price: 1000,
+    status: "open",
+    timestamp: "2025-01-26 09:25:10"
+  },
+  {
+    userId: "U12345",
+    orderId: "ORD3008",
+    symbol: "MARUTI",
+    side: "SELL",
+    orderType: "LIMIT",
+    qty: 1,
+    price: 12000,
+    status: "open",
+    timestamp: "2025-01-26 10:05:48"
+  },
+  {
+    userId: "U12345",
+    orderId: "ORD3009",
+    symbol: "ASIANPAINT",
+    side: "BUY",
+    orderType: "LIMIT",
+    qty: 3,
+    price: 3000,
+    status: "open",
+    timestamp: "2025-01-26 11:12:33"
+  },
+
   {
     userId: "U12345",
     orderId: "ORD3003",
@@ -271,7 +401,7 @@ export const ordersInitData = [
     side: "BUY",
     orderType: "MARKET",
     qty: 12,
-    price: null,                   // No execution yet
+    price: 643.20,
     status: "executed",
     timestamp: "2025-01-25 12:30:55"
   },
@@ -286,7 +416,7 @@ export const ordersInitData = [
     side: "BUY",
     orderType: "MARKET",
     qty: 4,
-    price: 2610,                   // executed at this price
+    price: 2610,
     status: "executed",
     timestamp: "2025-01-20 09:10:41"
   },
@@ -297,7 +427,7 @@ export const ordersInitData = [
     side: "SELL",
     orderType: "MARKET",
     qty: 2,
-    price: 3265,                   // executed
+    price: 3265,
     status: "executed",
     timestamp: "2025-01-20 10:55:12"
   },
@@ -308,7 +438,7 @@ export const ordersInitData = [
     side: "SELL",
     orderType: "LIMIT",
     qty: 3,
-    price: 1645,                   // executed at 1645
+    price: 1645,
     status: "executed",
     timestamp: "2025-01-20 11:23:56"
   },
@@ -319,9 +449,44 @@ export const ordersInitData = [
     side: "BUY",
     orderType: "LIMIT",
     qty: 15,
-    price: 1520,                   // executed at limit price
+    price: 1520,
     status: "executed",
     timestamp: "2025-01-20 12:15:32"
+  },
+
+  // ✅ NEW EXECUTED ORDERS
+  {
+    userId: "U12345",
+    orderId: "ORD2010",
+    symbol: "COALINDIA",
+    side: "BUY",
+    orderType: "MARKET",
+    qty: 20,
+    price: 390.75,
+    status: "executed",
+    timestamp: "2025-01-22 09:35:40"
+  },
+  {
+    userId: "U12345",
+    orderId: "ORD2011",
+    symbol: "ICICIBANK",
+    side: "BUY",
+    orderType: "LIMIT",
+    qty: 10,
+    price: 970,
+    status: "executed",
+    timestamp: "2025-01-22 11:18:29"
+  },
+  {
+    userId: "U12345",
+    orderId: "ORD2012",
+    symbol: "HCLTECH",
+    side: "SELL",
+    orderType: "MARKET",
+    qty: 4,
+    price: 1474.50,
+    status: "executed",
+    timestamp: "2025-01-23 10:02:15"
   },
 
   // -------------------
@@ -334,12 +499,10 @@ export const ordersInitData = [
     side: "SELL",
     orderType: "LIMIT",
     qty: 5,
-    price: 648,                    // original limit price
+    price: 648,
     status: "cancelled",
     timestamp: "2025-01-21 14:22:11"
   },
-
-  // ✔ MARKET ORDER can be cancelled too in simulation
   {
     userId: "U12345",
     orderId: "ORD2006",
@@ -347,8 +510,103 @@ export const ordersInitData = [
     side: "BUY",
     orderType: "MARKET",
     qty: 6,
-    price: null,                   // no fill
+    price: null,
     status: "cancelled",
     timestamp: "2025-01-21 14:30:19"
   }
 ];
+
+export const dummyTransactions = [
+  {
+    id: "TXN2001",
+    date: "2025-02-01 09:45:12",
+    type: "funds_added",
+    amount: 15000,
+    status: "successful",
+    refNo: "DUMMY12987561",
+    remarks: "Added funds via UPI"
+  },
+  {
+    id: "TXN2002",
+    date: "2025-02-02 11:10:35",
+    type: "withdrawal",
+    amount: 3000,
+    status: "pending",
+    refNo: "DUMMY98347512",
+    remarks: "Withdrawal requested (paper mode)"
+  },
+  {
+    id: "TXN2003",
+    date: "2025-02-03 14:22:57",
+    type: "buy",
+    amount: 5240.50,
+    status: "successful",
+    refNo: "ORD3002",
+    remarks: "Bought INFY (5 Qty @ ₹1048.10)"
+  },
+  {
+    id: "TXN2004",
+    date: "2025-02-04 16:40:18",
+    type: "sell",
+    amount: 3985.20,
+    status: "successful",
+    refNo: "ORD3003",
+    remarks: "Sold TCS (1 Qty @ ₹3985.20)"
+  },
+  {
+    id: "TXN2005",
+    date: "2025-02-05 10:05:09",
+    type: "charges_debited",
+    amount: 20,
+    status: "successful",
+    refNo: "CHG674389",
+    remarks: "Exchange transaction charge"
+  },
+  {
+    id: "TXN2006",
+    date: "2025-02-06 13:30:45",
+    type: "funds_added",
+    amount: 5000,
+    status: "successful",
+    refNo: "DUMMY45278391",
+    remarks: "Added funds via bank transfer"
+  },
+  {
+    id: "TXN2007",
+    date: "2025-02-07 15:12:27",
+    type: "withdrawal",
+    amount: 10000,
+    status: "failed",
+    refNo: "DUMMY7812349",
+    remarks: "Withdrawal failed due to invalid test account"
+  },
+  {
+    id: "TXN2008",
+    date: "2025-02-08 09:55:10",
+    type: "buy",
+    amount: 2600,
+    status: "successful",
+    refNo: "ORD3010",
+    remarks: "Bought SBIN (4 Qty @ ₹650)"
+  },
+  {
+    id: "TXN2009",
+    date: "2025-02-09 14:32:41",
+    type: "sell",
+    amount: 4870.50,
+    status: "successful",
+    refNo: "ORD3011",
+    remarks: "Sold RELIANCE (2 Qty @ ₹2435.25)"
+  },
+  {
+    id: "TXN2010",
+    date: "2025-02-10 17:28:59",
+    type: "refund",
+    amount: 2000,
+    status: "successful",
+    refNo: "RFND9821371",
+    remarks: "Rollback test transaction"
+  }
+];
+
+
