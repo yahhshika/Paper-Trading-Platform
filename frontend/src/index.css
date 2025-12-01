@@ -1,16 +1,58 @@
+/* GLOBAL RESET */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* ============= LIGHT THEME ============= */
+.light {
+  --bg-main: #ffffff;
+  --text-main: #1f2937;
+  --nav-bg: rgba(255, 255, 255, 0.9);
+  --nav-text: #1f2937;
+
+  background-color: var(--bg-main) !important;
+  color: var(--text-main) !important;
 }
-.btn-primary:hover{
-  color:white !important;
+
+/* ============= DARK THEME ============= */
+.dark {
+  --bg-main: #0f172a;
+  --text-main: #ffffff;
+  --nav-bg: rgba(0, 0, 0, 0.6);
+  --nav-text: #ffffff;
+
+  background-color: var(--bg-main) !important;
+  color: var(--text-main) !important;
+}
+
+/* NAVBAR */
+nav.navbar {
+  background-color: var(--nav-bg) !important;
+  color: var(--nav-text) !important;
+}
+
+nav.navbar a {
+  color: var(--nav-text) !important;
+}
+
+/* ANY CARD / BOX / SECTION */
+.card,
+.box,
+.section {
+  background-color: var(--bg-main) !important;
+  color: var(--text-main) !important;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #3b82f6 !important;
+  border-color: #3b82f6 !important;
+  color: white !important;
+}
+
+.btn-primary:hover {
+  background-color: #2563eb !important;
 }

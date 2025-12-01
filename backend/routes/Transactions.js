@@ -4,10 +4,23 @@ const router = express.Router();
 const { body, validationResult} = require('express-validator');
 const getId = require("../middlewares/users/getUserInfo");
 
-router.get("/", (req,res)=>{
-    res.send("root is fine")
-})
+router.get("/",getId,async(req,res)=>{
+    if(!req.user._id){
+        res.status(400).json({error:"login/signup to add"})
+        return;
+    }
+    try{
 
+        let result = await Transaction.find({ userId: req.user._id });
+        if(!result){
+            res.status(400).json({error:"no Transaction data available"});
+            return;
+        }
+        res.json({message:"all Transaction data fetched", result})
+    }catch(err){
+        res.status(400).json({error:err.message})
+    }
+})
 
 router.post("/",getId,[
     body('type','give a proper type of transaction').exists().isIn(["funds_added","withdrawal"]),

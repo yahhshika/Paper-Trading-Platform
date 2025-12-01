@@ -1,12 +1,12 @@
 function SignUp() {
-    return ( 
+    return (
     <div className="container">
-                
+
         <form className="my-5 col-6 offset-3">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email address</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
-                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                <div id="emailHelp" >We'll never share your email with anyone else.</div>
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">@</span>

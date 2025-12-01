@@ -6,9 +6,23 @@ const getId = require("../middlewares/users/getUserInfo");
 const Holding = require("../models/Holdings");
 
 
-// router.get("/",(req,res)=>{
-//     res.send("root is working")
-// })
+router.get("/",getId,async(req,res)=>{
+    if(!req.user._id){
+        res.status(400).json({error:"login/signup to add"})
+        return;
+    }
+    try{
+
+        let result = await Holding.find({ userId: req.user._id });
+        if(!result){
+            res.status(400).json({error:"no holding data available"});
+            return;
+        }
+        res.json({message:"all holding data fetched", result})
+    }catch(err){
+        res.status(400).json({error:err.message})
+    }
+})
 
 router.post("/",getId,[
     body('symbol','give a propersymbol').exists(),
@@ -29,7 +43,7 @@ router.post("/",getId,[
         let {symbol, company, ltp, avgPrice, qty, dayChange,dayChangePercent} = req.body;
         let alreadyInHoldings = await Holding.findOne({symbol:symbol});
         if(alreadyInHoldings && alreadyInHoldings.userId.toString() === req.user._id.toString()){
-            alreadyInHoldings.avgPrice = ((alreadyInHoldings.qty * alreadyInHoldings*avgPrice) + qty*avgPrice)/(alreadyInHoldings.qty + qty)
+            alreadyInHoldings.avgPrice = ((alreadyInHoldings.qty * alreadyInHoldings.avgPrice) + qty*avgPrice)/(alreadyInHoldings.qty + qty)
             alreadyInHoldings.qty = alreadyInHoldings.qty + qty;
             alreadyInHoldings.ltp = ltp;
             alreadyInHoldings.dayChange = dayChange;

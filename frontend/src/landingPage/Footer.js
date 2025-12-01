@@ -1,56 +1,57 @@
-import "./Footer.css"
 import { Link } from "react-router-dom";
+import "./Footer.css";
+import { useTheme } from "../context/ThemeContext";
+
 function Footer() {
-    return (<footer class="container pt-5 border-top">
-  <div class="row">
+  const { theme } = useTheme();
 
+  return (
+    <footer className={`container pt-5 border-top footer-${theme}`}>
+      <div className="row">
 
-    <div class="col-12 col-md-3 mb-4">
-      <h5 class="fw-semibold mb-3">Account</h5>
-      <ul class="list-unstyled">
-        <li><Link to="#" class="text-decoration-none text-muted footer-links">Open demat account</Link></li>
-        <li><Link to="#" class="text-decoration-none text-muted footer-links">Minor demat account</Link></li>
-        <li><Link to="#" class="text-decoration-none text-muted footer-links">NRI demat account</Link></li>
+        {/* ACCOUNT */}
+        <div className="col-12 col-md-3 mb-4">
+          <h5 className="fw-semibold mb-3 footer-heading">Account</h5>
+          <ul className="list-unstyled">
+            <li><Link to="#" className="footer-links">Open demat account</Link></li>
+            <li><Link to="#" className="footer-links">Minor demat account</Link></li>
+            <li><Link to="#" className="footer-links">NRI demat account</Link></li>
+          </ul>
+        </div>
 
-    
+        {/* SUPPORT */}
+        <div className="col-12 col-md-3 mb-4">
+          <h5 className="fw-semibold mb-3 footer-heading">Support</h5>
+          <ul className="list-unstyled">
+            <li><Link to="#" className="footer-links">Contact us</Link></li>
+            <li><Link to="#" className="footer-links">Support portal</Link></li>
+            <li><Link to="#" className="footer-links">How to file a complaint?</Link></li>
+          </ul>
+        </div>
 
-      </ul>
-    </div>
+        {/* COMPANY */}
+        <div className="col-12 col-md-3 mb-4">
+          <h5 className="fw-semibold mb-3 footer-heading">Company</h5>
+          <ul className="list-unstyled">
+            <li><Link to="#" className="footer-links">About</Link></li>
+            <li><Link to="#" className="footer-links">Philosophy</Link></li>
+            <li><Link to="#" className="footer-links">Press & media</Link></li>
+          </ul>
+        </div>
 
+        {/* QUICK LINKS */}
+        <div className="col-12 col-md-3 mb-4">
+          <h5 className="fw-semibold mb-3 footer-heading">Quick links</h5>
+          <ul className="list-unstyled">
+            <li><Link to="#" className="footer-links">Upcoming IPOs</Link></li>
+            <li><Link to="#" className="footer-links">Brokerage charges</Link></li>
+            <li><Link to="#" className="footer-links">Market holidays</Link></li>
+          </ul>
+        </div>
 
-    <div class="col-12 col-md-3 mb-4">
-      <h5 class="fw-semibold mb-3">Support</h5>
-      <ul class="list-unstyled">
-        <li><Link to="#" class="text-decoration-none text-muted footer-links">Contact us</Link></li>
-        <li><Link to="#" class="text-decoration-none text-muted footer-links">Support portal</Link></li>
-        <li><Link to="#" class="text-decoration-none text-muted footer-links">How to file Link complaint?</Link></li>
-      </ul>
-    </div>
-
-
-    <div class="col-12 col-md-3 mb-4">
-      <h5 class="fw-semibold mb-3">Company</h5>
-      <ul class="list-unstyled">
-        <li><Link to="#" class="text-decoration-none text-muted footer-links">About</Link></li>
-        <li><Link to="#" class="text-decoration-none text-muted footer-links">Philosophy</Link></li>
-        <li><Link to="#" class="text-decoration-none text-muted footer-links">Press & media</Link></li>
-      </ul>
-    </div>
-
-
-    <div class="col-12 col-md-3">
-      <h5 class="fw-semibold mb-3">Quick links</h5>
-      <ul class="list-unstyled">
-        <li><Link to="#" class="text-decoration-none text-muted footer-links">Upcoming IPOs</Link></li>
-        <li><Link to="#" class="text-decoration-none text-muted footer-links">Brokerage charges</Link></li>
-        <li><Link to="#" class="text-decoration-none text-muted footer-links">Market holidays</Link></li>
-     
-      </ul>
-    </div>
-
-  </div>
-</footer>
-);
+      </div>
+    </footer>
+  );
 }
 
 export default Footer;

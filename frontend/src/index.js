@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ThemeProvider } from './context/ThemeContext';
+import "./index.css";
 
 // import HomePage from './landingPage/home/HomePage';
 import App from './App';

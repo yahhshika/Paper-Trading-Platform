@@ -1,0 +1,395 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1400 420"
+  role="img"
+  aria-labelledby="tgTitle"
+>
+  <title id="tgTitle">TechGuru Stock Learning Collage</title>
+
+  <!-- ========= GLOBAL STYLES & DEFINITIONS ========= -->
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bgGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+
+    <!-- TechGuru text gradient -->
+    <linearGradient id="logoTextGradient" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e5f0ff" />
+      <stop offset="50%" stop-color="#60a5fa" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+
+    <!-- Card gradient -->
+    <linearGradient id="cardGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1220" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+
+    <!-- Soft glow -->
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="16" result="blur" />
+      <feColorMatrix
+        in="blur"
+        type="matrix"
+        values="0 0 0 0 0.2  0 0 0 0 0.5  0 0 0 0 1  0 0 0 0.8 0"
+      />
+    </filter>
+
+    <!-- Animations -->
+    <style>
+      @keyframes ticker-scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-260px); }
+      }
+
+      @keyframes pulse-card {
+        0%, 100% { opacity: 0.95; }
+        50% { opacity: 1; }
+      }
+
+      @keyframes float-pie {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-4px); }
+      }
+
+      @keyframes float-bars {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-3px); }
+      }
+
+      @keyframes glowLogo {
+        0%, 100% { filter: drop-shadow(0 0 0px rgba(56,189,248,0.4)); }
+        50% { filter: drop-shadow(0 0 12px rgba(56,189,248,0.85)); }
+      }
+
+      @keyframes rotate-slice {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      @keyframes line-dash {
+        0% { stroke-dashoffset: 420; }
+        100% { stroke-dashoffset: 0; }
+      }
+
+      .ticker-group {
+        animation: ticker-scroll 10s linear infinite;
+      }
+
+      .card-pulse {
+        animation: pulse-card 6s ease-in-out infinite;
+      }
+
+      .pie-wrapper {
+        animation: float-pie 5s ease-in-out infinite;
+        transform-origin: 1080px 210px;
+      }
+
+      .bars-wrapper {
+        animation: float-bars 4.5s ease-in-out infinite;
+        transform-origin: 250px 230px;
+      }
+
+      .logo-wrapper {
+        animation: glowLogo 5s ease-in-out infinite;
+      }
+
+      .pie-slice-spin {
+        transform-origin: 1150px 210px;
+        animation: rotate-slice 14s linear infinite;
+      }
+
+      .line-animated {
+        stroke-dasharray: 420;
+        animation: line-dash 7s ease-in-out infinite alternate;
+      }
+    </style>
+  </defs>
+
+  <!-- ========= BACKGROUND ========= -->
+  <rect x="0" y="0" width="100%" height="420" fill="url(#bgGradient)" />
+
+  <!-- Soft glow & ring behind center logo -->
+  <circle cx="700" cy="220" r="150" fill="#1d4ed8" opacity="0.25" filter="url(#softGlow)" />
+  <circle cx="700" cy="220" r="230" fill="#0f172a" opacity="0.55" />
+
+  <!-- ========= CENTER: TECHGURU LOGO (NO OVERLAP) ========= -->
+  <g class="logo-wrapper">
+    <!-- Icon: diagonal stock line -->
+    <polyline
+      points="510,230 550,200 570,216 610,175"
+      fill="none"
+      stroke="#3b82f6"
+      stroke-width="6"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+
+
+    <!-- TechGuru text -->
+    <text
+      x="600"
+      y="220"
+      font-family="system-ui, -apple-system, BlinkMacSystemFont, sans-serif"
+      font-size="46"
+      font-weight="700"
+      fill="url(#logoTextGradient)"
+    >
+      TradeGuru
+    </text>
+
+    <!-- Subtitle -->
+    <text
+      x="615"
+      y="245"
+      font-family="system-ui, -apple-system, BlinkMacSystemFont, sans-serif"
+      font-size="16"
+      fill="#9ca3af"
+    >
+      Paper Trading Dashboard
+    </text>
+  </g>
+
+  <!-- ========= LEFT: RISING & FALLING STOCK BARS ========= -->
+  <g class="bars-wrapper">
+    <rect
+      x="110"
+      y="110"
+      width="270"
+      height="220"
+      rx="18"
+      fill="url(#cardGradient)"
+      stroke="#1e293b"
+      stroke-width="1.5"
+    />
+
+    <text x="130" y="140" font-family="system-ui" font-size="14" fill="#e5e7eb">
+      Market Heatmap
+    </text>
+    <text x="130" y="158" font-family="system-ui" font-size="11" fill="#9ca3af">
+      Rising &amp; falling simulated stocks
+    </text>
+
+    <line x1="130" y1="280" x2="360" y2="280" stroke="#1f2937" stroke-width="1" />
+
+    <!-- Animated bars -->
+    <g>
+      <rect x="140" y="220" width="18" height="60" rx="4" fill="#22c55e">
+        <animate attributeName="y" values="230;210;230" dur="3.2s" repeatCount="indefinite" />
+        <animate attributeName="height" values="50;70;50" dur="3.2s" repeatCount="indefinite" />
+      </rect>
+
+      <rect x="167" y="205" width="18" height="75" rx="4" fill="#16a34a">
+        <animate attributeName="y" values="215;195;215" dur="3.8s" repeatCount="indefinite" />
+        <animate attributeName="height" values="65;85;65" dur="3.8s" repeatCount="indefinite" />
+      </rect>
+
+      <rect x="194" y="235" width="18" height="45" rx="4" fill="#f97316">
+        <animate attributeName="y" values="245;230;245" dur="3.1s" repeatCount="indefinite" />
+        <animate attributeName="height" values="35;50;35" dur="3.1s" repeatCount="indefinite" />
+      </rect>
+
+      <rect x="221" y="200" width="18" height="80" rx="4" fill="#3b82f6">
+        <animate attributeName="y" values="215;190;215" dur="4.0s" repeatCount="indefinite" />
+        <animate attributeName="height" values="65;90;65" dur="4.0s" repeatCount="indefinite" />
+      </rect>
+
+      <rect x="248" y="225" width="18" height="55" rx="4" fill="#22c55e">
+        <animate attributeName="y" values="235;215;235" dur="3.0s" repeatCount="indefinite" />
+        <animate attributeName="height" values="45;65;45" dur="3.0s" repeatCount="indefinite" />
+      </rect>
+
+      <rect x="275" y="215" width="18" height="65" rx="4" fill="#ef4444">
+        <animate attributeName="y" values="225;205;225" dur="3.5s" repeatCount="indefinite" />
+        <animate attributeName="height" values="55;75;55" dur="3.5s" repeatCount="indefinite" />
+      </rect>
+
+      <rect x="302" y="240" width="18" height="40" rx="4" fill="#f59e0b">
+        <animate attributeName="y" values="250;235;250" dur="2.9s" repeatCount="indefinite" />
+        <animate attributeName="height" values="30;45;30" dur="2.9s" repeatCount="indefinite" />
+      </rect>
+
+      <rect x="329" y="210" width="18" height="70" rx="4" fill="#22c55e">
+        <animate attributeName="y" values="220;200;220" dur="3.7s" repeatCount="indefinite" />
+        <animate attributeName="height" values="60;80;60" dur="3.7s" repeatCount="indefinite" />
+      </rect>
+    </g>
+
+    <text x="130" y="298" font-family="system-ui" font-size="10" fill="#6b7280">
+      Simulated stock performance
+    </text>
+  </g>
+
+  <!-- ========= RIGHT: PIE CHART + LEGEND ========= -->
+  <g class="pie-wrapper">
+    <rect
+      x="1020"
+      y="110"
+      width="270"
+      height="220"
+      rx="18"
+      fill="url(#cardGradient)"
+      stroke="#1e293b"
+      stroke-width="1.5"
+    />
+
+    <text x="1040" y="140" font-family="system-ui" font-size="14" fill="#e5e7eb">
+      Portfolio Mix
+    </text>
+    <text x="1040" y="158" font-family="system-ui" font-size="11" fill="#9ca3af">
+      Virtual asset allocation
+    </text>
+
+    <!-- Donut base -->
+    <circle cx="1150" cy="210" r="62" fill="#020617" stroke="#111827" stroke-width="2" />
+
+    <!-- Rotating slice -->
+    <g class="pie-slice-spin">
+      <path
+        d="M1150 210 L1150 148 A62 62 0 0 1 1202 193 Z"
+        fill="#3b82f6"
+      />
+    </g>
+
+    <!-- Static slices -->
+    <path d="M1150 210 L1202 193 A62 62 0 0 1 1180 250 Z" fill="#22c55e" />
+    <path d="M1150 210 L1180 250 A62 62 0 0 1 1110 260 Z" fill="#f97316" />
+    <path d="M1150 210 L1110 260 A62 62 0 0 1 1130 152 Z" fill="#8b5cf6" />
+
+    <!-- Inner circle & label -->
+    <circle cx="1150" cy="210" r="28" fill="#020617" stroke="#1e293b" />
+    <text x="1150" y="214" text-anchor="middle" font-family="system-ui" font-size="11" fill="#e5e7eb">
+      Mix
+    </text>
+
+    <!-- Legend -->
+    <g font-family="system-ui" font-size="11" fill="#e5e7eb">
+      <rect x="1040" y="240" width="10" height="10" rx="2" fill="#3b82f6" />
+      <text x="1055" y="248">Equity</text>
+
+      <rect x="1040" y="260" width="10" height="10" rx="2" fill="#22c55e" />
+      <text x="1055" y="268">ETF</text>
+
+      <rect x="1040" y="280" width="10" height="10" rx="2" fill="#f97316" />
+      <text x="1055" y="288">Mutual Funds</text>
+
+      <rect x="1040" y="300" width="10" height="10" rx="2" fill="#8b5cf6" />
+      <text x="1055" y="308">Cash</text>
+    </g>
+  </g>
+
+  <!-- ========= TOP-CENTER: LINE CHART BAND (MOVED UP, NO OVERLAP) ========= -->
+  <g class="card-pulse">
+    <rect
+      x="420"
+      y="40"
+      width="560"
+      height="110"
+      rx="18"
+      fill="url(#cardGradient)"
+      stroke="#1e293b"
+      stroke-width="1.5"
+    />
+
+    <text x="440" y="70" font-family="system-ui" font-size="13" fill="#e5e7eb">
+      Weekly P&amp;L Trend
+    </text>
+    <text x="440" y="87" font-family="system-ui" font-size="11" fill="#9ca3af">
+      Simulated learning-only data
+    </text>
+
+    <!-- Animated line chart -->
+    <polyline
+      class="line-animated"
+      points="
+        450,110 470,105 490,115 510,103 530,95 550,102 570,90 590,97
+        610,87 630,94 650,85 670,90 690,80 710,85 730,77 750,83
+        770,75 790,81 810,73 830,77 850,71 870,74 890,69 910,71
+        930,65
+      "
+      fill="none"
+      stroke="#38bdf8"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+
+    <line x1="440" y1="122" x2="960" y2="122" stroke="#111827" stroke-width="1" />
+
+    <!-- Tag on the right -->
+    <rect x="850" y="78" width="110" height="26" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <text x="860" y="95" font-family="system-ui" font-size="11" fill="#bbf7d0">
+      Day's P&amp;L +2.3%
+    </text>
+  </g>
+
+  <!-- ========= BOTTOM: MOVING TICKER ========= -->
+  <g>
+    <rect
+      x="160"
+      y="310"
+      width="1080"
+      height="54"
+      rx="14"
+      fill="#020617"
+      stroke="#1f2937"
+      stroke-width="1.5"
+    />
+    <clipPath id="tickerClip">
+      <rect x="165" y="315" width="1070" height="44" rx="10" />
+    </clipPath>
+
+    <g clip-path="url(#tickerClip)">
+      <g class="ticker-group">
+        <g font-family="system-ui" font-size="12" fill="#e5e7eb">
+          <rect x="170" y="322" width="90" height="28" rx="6" fill="#111827" />
+          <text x="176" y="340">NIFTY 50</text>
+          <text x="230" y="340" fill="#22c55e">+ 0.76%</text>
+
+          <rect x="280" y="322" width="90" height="28" rx="6" fill="#111827" />
+          <text x="286" y="340">BANKNIFTY</text>
+          <text x="355" y="340" fill="#22c55e">+ 1.12%</text>
+
+          <rect x="390" y="322" width="90" height="28" rx="6" fill="#111827" />
+          <text x="396" y="340">IT INDEX</text>
+          <text x="446" y="340" fill="#ef4444">- 0.42%</text>
+
+          <rect x="500" y="322" width="90" height="28" rx="6" fill="#111827" />
+          <text x="506" y="340">MIDCAP</text>
+          <text x="556" y="340" fill="#22c55e">+ 0.33%</text>
+
+          <rect x="610" y="322" width="90" height="28" rx="6" fill="#111827" />
+          <text x="616" y="340">FIN SERV</text>
+          <text x="676" y="340" fill="#22c55e">+ 0.58%</text>
+
+          <rect x="720" y="322" width="90" height="28" rx="6" fill="#111827" />
+          <text x="726" y="340">SMALLCAP</text>
+          <text x="796" y="340" fill="#ef4444">- 0.21%</text>
+
+          <rect x="830" y="322" width="90" height="28" rx="6" fill="#111827" />
+          <text x="836" y="340">USD/INR</text>
+          <text x="896" y="340" fill="#eab308">83.21</text>
+
+          <rect x="940" y="322" width="90" height="28" rx="6" fill="#111827" />
+          <text x="946" y="340">GOLD</text>
+          <text x="990" y="340" fill="#22c55e">+ 0.19%</text>
+
+          <rect x="1050" y="322" width="90" height="28" rx="6" fill="#111827" />
+          <text x="1056" y="340">CRUDE</text>
+          <text x="1106" y="340" fill="#ef4444">- 0.34%</text>
+
+          <rect x="1160" y="322" width="90" height="28" rx="6" fill="#111827" />
+          <text x="1166" y="340">VIX</text>
+          <text x="1196" y="340" fill="#22c55e">+ 1.02%</text>
+
+          <!-- second copy for seamless loop -->
+          <rect x="1270" y="322" width="90" height="28" rx="6" fill="#111827" />
+          <text x="1276" y="340">NIFTY 50</text>
+          <text x="1330" y="340" fill="#22c55e">+ 0.76%</text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

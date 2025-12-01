@@ -1,87 +1,124 @@
-/* ===== FAQ PAGE CONTAINER ===== */
-.faq-container {
-  width: 100%;
-  font-family: "Inter", sans-serif;
+
+.faq-page {
+  padding: 20px;
+  min-height: 100vh;
+  transition: all 0.3s ease;
 }
 
-/* ===== STOCK IMAGE BANNER ===== */
-.faq-banner {
-  height: 300px;
-  /* background-image: url("https://img.freepik.com/free-vector/abstract-red-light-lines-pipe-speed-zoom-black-background-technology_1142-8971.jpghttps://images.pond5.com/audio-spectrum-visualiser-background-vj-footage-074284430_iconl.jpeghttps://images.pond5.com/audio-spectrum-visualiser-background-vj-footage-074284430_iconl.jpeghttps://images.pond5.com/audio-spectrum-visualiser-background-vj-footage-074284430_iconl.jpeg"); */
-  background-size: cover;
-  background-position: center;
+/* Title */
+.faq-title {
   text-align: center;
-  color: rgb(35, 121, 206);
-  padding-top: 90px;
-  /* text-shadow: 0px 0px 12px rgba(0,0,0,0.6); */
-}
-
-.faq-banner h1 {
   font-size: 42px;
   font-weight: 700;
+  margin-bottom: 10px;
 }
 
-.faq-banner p {
-  margin-top: 10px;
+/* Subtitle */
+.faq-subtitle {
+  text-align: center;
   font-size: 18px;
-  opacity: 0.9;
+  opacity: 0.8;
 }
 
-/* ===== FAQ BOX ===== */
-.faq-box {
-  max-width: 900px;
-  margin: 50px auto;
-  padding: 0 20px;
+/* Search Box */
+.faq-search-box {
+  max-width: 700px;
+  margin: 25px auto;
 }
 
-/* ===== FAQ ITEMS ===== */
-.faq-item {
-  background: white;
-  border-radius: 14px;
-  padding: 20px 25px;
-  margin-bottom: 18px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.07);
-  transition: 0.3s ease;
+/* Tabs */
+.faq-tabs .MuiTab-root {
+  font-weight: 600 !important;
+  text-transform: none !important;
+  transition: color 0.3s ease;
 }
 
-.faq-item:hover {
-  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+.faq-tabs .Mui-selected {
+  color: #387ed1 !important;
+  font-weight: 700 !important;
 }
 
-/* ===== FAQ QUESTION ROW ===== */
+/* Accordion */
+.faq-accordion {
+  margin-bottom: 12px;
+  border-radius: 10px !important;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Question text */
 .faq-question {
-  display: flex;
-  justify-content: space-between;
-  cursor: pointer;
-}
-
-.faq-question h3 {
-  font-size: 20px;
-  margin: 0;
+  font-size: 18px;
   font-weight: 600;
 }
 
-.faq-question span {
-  font-size: 26px;
-  font-weight: bold;
-}
-
-/* ===== FAQ ANSWER ===== */
+/* Answer text */
 .faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.35s ease;
-  padding-right: 15px;
-}
-
-.faq-answer.open {
-  max-height: 200px;
-  margin-top: 12px;
-}
-
-.faq-answer p {
-  margin: 0;
-  line-height: 1.6;
-  color: #555;
   font-size: 16px;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+
+/* ===========================================
+   DARK THEME SUPPORT
+   When .dark class is added to .faq-page
+=========================================== */
+.faq-page.dark {
+  color: #ffffff !important;
+}
+
+/* Title + Subtitle */
+.faq-page.dark .faq-title,
+.faq-page.dark .faq-subtitle {
+  color: #ffffff !important;
+}
+
+/* Tabs */
+.faq-page.dark .MuiTab-root {
+  color: #e5e5e5 !important;
+}
+
+.faq-page.dark .Mui-selected {
+  color: #4ea8ff !important;
+}
+
+/* Tab Icons */
+.faq-page.dark .MuiTab-iconWrapper {
+  color: #ffffff !important;
+}
+
+/* Search Input */
+.faq-page.dark .MuiInputBase-input {
+  color: #ffffff !important;
+}
+
+.faq-page.dark .MuiInputBase-input::placeholder {
+  color: #bbbbbb !important;
+}
+
+/* Search field outline */
+.faq-page.dark fieldset {
+  border-color: #666 !important;
+}
+
+/* Accordion background */
+.faq-page.dark .faq-accordion {
+  background-color: #0f172a !important; /* deep blue-grey */
+  color: #ffffff !important;
+}
+
+/* Questions */
+.faq-page.dark .faq-question {
+  color: #ffffff !important;
+}
+
+/* Answers */
+.faq-page.dark .faq-answer {
+  color: #e8e8e8 !important;
+}
+
+/* Expand arrow */
+.faq-page.dark .MuiSvgIcon-root {
+  color: #ffffff !important;
 }

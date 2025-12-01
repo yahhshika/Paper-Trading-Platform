@@ -4,8 +4,22 @@ const { body, validationResult} = require('express-validator');
 const getId = require("../middlewares/users/getUserInfo");
 const TotalOrder = require("../models/TotalOrder");
 
-router.get("/", (req,res)=>{
-    res.send("root is working")
+router.get("/",getId,async(req,res)=>{
+    if(!req.user._id){
+        res.status(400).json({error:"login/signup to add"})
+        return;
+    }
+    try{
+
+        let result = await TotalOrder.find({ userId: req.user._id });
+        if(!result){
+            res.status(400).json({error:"no total orders data available"});
+            return;
+        }
+        res.json({message:"all total orders data fetched", result})
+    }catch(err){
+        res.status(400).json({error:err.message})
+    }
 })
 
 router.post("/",getId,[

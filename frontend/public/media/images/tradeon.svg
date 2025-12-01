@@ -1,0 +1,169 @@
+<svg width="1000" height="650" viewBox="0 0 1000 650" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    /* Light Mode */
+    @media (prefers-color-scheme: light) {
+      .bg { fill: #ffffff; }
+    }
+
+    /* Dark Mode */
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #0f172a; }
+    }
+  </style>
+
+  <!-- MAIN CARD BACKDROP SHADOW (soft) -->
+  <ellipse cx="480" cy="360" rx="400" ry="260" fill="#e2e8f0" opacity="0.15"/>
+
+  <!-- MAIN DASHBOARD CARD -->
+  <rect x="100" y="90" width="620" height="420" rx="20" fill="#ffffff" stroke="#e5e7eb"/>
+
+  <!-- TOP NAVBAR -->
+  <rect x="100" y="90" width="620" height="60" rx="20" fill="#f9fafb"/>
+
+  <!-- Logo -->
+  <g transform="translate(135,112)">
+    <rect x="0" y="6" width="7" height="20" rx="2" fill="#22c55e"/>
+    <rect x="12" y="2" width="7" height="24" rx="2" fill="#16a34a"/>
+    <rect x="24" y="10" width="7" height="16" rx="2" fill="#16a34a"/>
+    <text x="42" y="20" font-size="18" font-family="system-ui" fill="#111827">Tradeon</text>
+  </g>
+
+  <!-- Tickers -->
+  <g font-family="system-ui" font-size="12" fill="#4b5563">
+    <text x="470" y="125">NIFTY 50</text>
+    <text x="540" y="125" fill="#9ca3af">0.00</text>
+    <circle cx="568" cy="121" r="2" fill="#9ca3af"/>
+    <text x="585" y="125">SENSEX</text>
+    <text x="655" y="125" fill="#9ca3af">0.00</text>
+  </g>
+
+  <!-- LEFT CONTENT -->
+  <line x1="410" y1="150" x2="410" y2="480" stroke="#e5e7eb"/>
+
+  <text x="135" y="160" font-size="22" font-family="system-ui" fill="#111827">Hi, user !</text>
+
+  <!-- Equity -->
+  <g transform="translate(135,200)" font-family="system-ui">
+    <text x="0" y="0" font-size="18" fill="#111827">Equity</text>
+    <circle cx="-25" cy="-6" r="10" fill="none" stroke="#9ca3af"/>
+    <text x="-28" y="-2" font-size="11" fill="#6b7280">i</text>
+
+    <text x="0" y="55" font-size="34" fill="#111827">3.74k</text>
+    <text x="0" y="82" font-size="13" fill="#6b7280">Margin Available</text>
+
+    <line x1="170" y1="20" x2="170" y2="95" stroke="#e5e7eb"/>
+
+    <text x="195" y="34" font-size="14" fill="#6b7280">Margin used: 0</text>
+    <text x="195" y="60" font-size="14" fill="#6b7280">Opening balance 3.74k</text>
+  </g>
+
+  <!-- Divider -->
+  <line x1="135" y1="300" x2="360" y2="300" stroke="#e5e7eb"/>
+
+  <!-- Holdings -->
+  <g transform="translate(135,330)" font-family="system-ui">
+    <rect x="-32" y="-18" width="25" height="18" rx="3" fill="none" stroke="#111827"/>
+    <line x1="-27" y1="-8" x2="-13" y2="-8" stroke="#111827" stroke-width="1.4"/>
+    <path d="M -26 -18 C -26 -26 -14 -26 -14 -18" fill="none" stroke="#111827" stroke-width="1.4"/>
+
+    <text x="0" y="4" font-size="18" fill="#111827">Holdings</text>
+
+    <text x="0" y="58" font-size="34" fill="#111827">3.74k</text>
+    <text x="95" y="58" font-size="14" fill="#16a34a">+5.20%</text>
+    <text x="0" y="84" font-size="13" fill="#6b7280">P&amp;L</text>
+
+    <line x1="170" y1="20" x2="170" y2="95" stroke="#e5e7eb"/>
+
+    <text x="195" y="34" font-size="14" fill="#6b7280">Current value: 31.43K</text>
+    <text x="195" y="60" font-size="14" fill="#6b7280">Investment: 29.88k</text>
+  </g>
+
+  <!-- RIGHT TABLE -->
+  <g transform="translate(440,180)" font-family="system-ui">
+    <text x="0" y="0" font-size="14" fill="#6b7280">9/15</text>
+
+    <text x="0" y="35" font-size="12" fill="#9ca3af">SYMBOL</text>
+    <text x="140" y="35" font-size="12" fill="#9ca3af">% CHG</text>
+    <text x="210" y="35" font-size="12" fill="#9ca3af">PRICE</text>
+
+    <!-- stock rows -->
+    <g font-size="14">
+      <text x="0" y="65" fill="#0f766e">INFY</text>
+      <text x="140" y="65" fill="#ef4444">-1.60%</text>
+      <text x="210" y="65" fill="#111827">1555.45</text>
+
+      <text x="0" y="95" fill="#0f766e">ONGC</text>
+      <text x="140" y="95" fill="#ef4444">-0.09%</text>
+      <text x="210" y="95" fill="#111827">116.8</text>
+
+      <text x="0" y="125" fill="#0f766e">TCS</text>
+      <text x="140" y="125" fill="#ef4444">-0.25%</text>
+      <text x="210" y="125" fill="#111827">3194.8</text>
+
+      <text x="0" y="155" fill="#16a34a">KPITTECH</text>
+      <text x="140" y="155" fill="#16a34a">3.54%</text>
+      <text x="210" y="155" fill="#111827">266.45</text>
+
+      <text x="0" y="185" fill="#ef4444">QUICKHEAL</text>
+      <text x="140" y="185" fill="#ef4444">-0.15%</text>
+      <text x="210" y="185" fill="#111827">308.55</text>
+
+      <text x="0" y="215" fill="#16a34a">WIPRO</text>
+      <text x="140" y="215" fill="#16a34a">0.32%</text>
+      <text x="210" y="215" fill="#111827">577.75</text>
+
+      <text x="0" y="245" fill="#ef4444">M&amp;M</text>
+      <text x="140" y="245" fill="#ef4444">-0.01%</text>
+      <text x="210" y="245" fill="#111827">779.8</text>
+
+      <text x="0" y="275" fill="#16a34a">RELIANCE</text>
+      <text x="140" y="275" fill="#16a34a">1.44%</text>
+      <text x="210" y="275" fill="#111827">2112.4</text>
+    </g>
+  </g>
+
+  <!-- PHONE (right) -->
+  <g transform="translate(720,180)">
+    <rect x="0" y="0" width="190" height="360" rx="20" fill="#111827" opacity="0.75"/>
+    <rect x="8" y="10" width="174" height="336" rx="16" fill="#fafafa"/>
+
+    <!-- top -->
+    <rect x="8" y="10" width="174" height="44" rx="14" fill="#f3f4f6"/>
+    <circle cx="28" cy="32" r="6" fill="#22c55e"/>
+    <circle cx="44" cy="32" r="6" fill="#16a34a"/>
+    <circle cx="60" cy="32" r="6" fill="#22c55e"/>
+    <text x="80" y="36" font-size="12" font-family="system-ui" fill="#4b5563">RELIANCE</text>
+
+    <!-- buy sell -->
+    <rect x="32" y="70" width="60" height="24" rx="4" fill="#3b82f6"/>
+    <rect x="108" y="70" width="60" height="24" rx="4" fill="#ef4444"/>
+
+    <text x="48" y="86" font-size="12" fill="#ffffff">BUY</text>
+    <text x="124" y="86" font-size="12" fill="#ffffff">SELL</text>
+
+    <!-- chart -->
+    <rect x="32" y="110" width="138" height="90" rx="6" fill="#ffffff" stroke="#e5e7eb"/>
+    <polyline points="40,186 54,168 70,176 86,158 102,166 118,150 134,158 150,144 166,152 178,138"
+      fill="none" stroke="#f97316" stroke-width="1.6" stroke-linecap="round"/>
+
+    <!-- orderbook -->
+    <rect x="32" y="212" width="138" height="100" rx="6" fill="#ffffff" stroke="#e5e7eb"/>
+    <text x="38" y="228" font-size="10" fill="#6b7280">BID</text>
+    <text x="86" y="228" font-size="10" fill="#6b7280">ASK</text>
+    <text x="132" y="228" font-size="10" fill="#6b7280">QTY</text>
+
+    <text x="38" y="246" font-size="10" fill="#16a34a">2112.40</text>
+    <text x="86" y="246" font-size="10" fill="#ef4444">2112.60</text>
+    <text x="132" y="246" font-size="10" fill="#6b7280">10</text>
+
+    <text x="38" y="266" font-size="10" fill="#16a34a">2111.90</text>
+    <text x="86" y="266" font-size="10" fill="#ef4444">2112.10</text>
+    <text x="132" y="266" font-size="10" fill="#6b7280">18</text>
+
+    <text x="38" y="286" font-size="10" fill="#16a34a">2111.40</text>
+    <text x="86" y="286" font-size="10" fill="#ef4444">2111.70</text>
+    <text x="132" y="286" font-size="10" fill="#6b7280">22</text>
+  </g>
+
+
+</svg>

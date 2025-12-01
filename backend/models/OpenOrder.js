@@ -63,6 +63,7 @@ const OpenOrderSchema = new Schema(
       required: true,
       min: 0,
     },
+
     dayChange: {
         type: Number,
         required: false,

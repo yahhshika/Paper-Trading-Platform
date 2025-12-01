@@ -13,15 +13,15 @@ function AboutPage() {
             alt="Trading illustration"
             className="img-fluid"
           />
-     
+
         </div>
 
 
         {/* Right Text */}
         <div className="col-md-6">
           <h2 className="fw-bold mb-3 gradient-text">About Our Paper Trading Platform</h2>
-          <p className="text-muted">
-            Our platform gives you a real market trading experience using
+          <p >
+             Our platform gives you a real market trading experience using
             <strong> virtual money</strong>. Practice, learn, and experiment with your
             strategies without taking any financial risks.
           </p>

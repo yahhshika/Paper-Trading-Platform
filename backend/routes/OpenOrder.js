@@ -4,8 +4,24 @@ const { body, validationResult} = require('express-validator');
 const getId = require("../middlewares/users/getUserInfo");
 const openOrder = require("../models/OpenOrder");
 const OpenOrder = require("../models/OpenOrder");
-router.get("/",(req,res)=>{ 
-    res.send("api is worknig")
+
+
+router.get("/",getId,async(req,res)=>{
+    if(!req.user._id){
+        res.status(400).json({error:"login/signup to add"})
+        return;
+    }
+    try{
+
+        let result = await OpenOrder.find({ userId: req.user._id });
+        if(!result){
+            res.status(400).json({error:"no OpenOrder data available"});
+            return;
+        }
+        res.json({message:"all OpenOrders fetched", result})
+    }catch(err){
+        res.status(400).json({error:err.message})
+    }
 })
 
 router.post("/",getId,[

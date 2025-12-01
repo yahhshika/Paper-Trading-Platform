@@ -1,12 +1,20 @@
 // models/TradeBook.js
 const mongoose = require('mongoose');
-
+const { v4: uuidv4 } = require('uuid');
 const TradeBookSchema = new mongoose.Schema({
-  orderId: {
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'TotalOrder',
-    required: true
+    ref: 'User',
+    required: false // set true if every transaction must belong to a user
   },
+  orderId: {
+    type: String,
+    required: true,
+    unique: true,
+    default: () => uuidv4()
+  },
+
+
 
   symbol: {
     type: String,

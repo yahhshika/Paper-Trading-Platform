@@ -13,6 +13,28 @@ const openOrderRouter = require("./routes/OpenOrder")
 const totalOrderRouter = require("./routes/TotalOrders")
 const transactionRouter = require("./routes/Transactions")
 const tradebookRouter = require("./routes/Tradebook")
+const allMarketDataRouter = require("./routes/AllMarketData")
+const http = require("http");
+const { Server } = require("socket.io");
+
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:3000",  // your React frontend
+    methods: ["GET", "POST"],
+  },
+});
+
+io.on("connection", (socket) => {
+  console.log("Frontend connected:", socket.id);
+
+  socket.on("disconnect", () => {
+    console.log("Frontend disconnected:", socket.id);
+  });
+});
+
+module.exports = io;
+
 
 main().then(async()=>{
     console.log("connected to db at index.js");
@@ -22,6 +44,13 @@ main().then(async()=>{
 }).catch(e=>{
     console.log("error in connecting to db in index.js: ",e);
 })
+
+// -----------------------------------------
+const makeRandomizer = require('./utilFunctions/ltpRandomizer'); // adjust path
+const randomizer = makeRandomizer();
+const controller = randomizer.start(io, { intervalMs: 3000, maxPercent: 1, verbose: true });
+
+
 app.listen(port, ()=>{ 
     console.log("app is listening")
 })
@@ -36,6 +65,7 @@ app.use("/api/openOrder",openOrderRouter);
 app.use("/api/totalOrder",totalOrderRouter);
 app.use("/api/transaction",transactionRouter);
 app.use("/api/tradebook",tradebookRouter);
+app.use("/api/marketData",allMarketDataRouter);
 
 
 app.get("/", (req,res)=>{

@@ -5,8 +5,22 @@ const getId = require("../middlewares/users/getUserInfo");
 const Position = require("../models/Postions")
 const { body, validationResult} = require('express-validator');
 
-router.get("/",(req,res)=>{ 
-    res.send("api is worknig")
+router.get("/",getId,async(req,res)=>{
+    if(!req.user._id){
+        res.status(400).json({error:"login/signup to add"})
+        return;
+    }
+    try{
+
+        let result = await Position.find({ userId: req.user._id });
+        if(!result){
+            res.status(400).json({error:"no positions data available"});
+            return;
+        }
+        res.json({message:"all positions data fetched", result})
+    }catch(err){
+        res.status(400).json({error:err.message})
+    }
 })
 //edit and add
 router.post("/",getId,[
@@ -28,7 +42,7 @@ router.post("/",getId,[
         let {symbol, company, ltp, avgPrice, qty, dayChange,dayChangePercent} = req.body;
         let alreadyInPositions = await Position.findOne({symbol:symbol});
         if(alreadyInPositions && alreadyInPositions.userId.toString() === req.user._id.toString()){
-            alreadyInPositions.avgPrice = ((alreadyInPositions.qty * alreadyInPositions*avgPrice) + qty*avgPrice)/(alreadyInPositions.qty + qty)
+            alreadyInPositions.avgPrice = ((alreadyInPositions.qty * alreadyInPositions.avgPrice) + qty*avgPrice)/(alreadyInPositions.qty + qty)
             alreadyInPositions.qty = alreadyInPositions.qty + qty;
             alreadyInPositions.ltp = ltp;
             alreadyInPositions.dayChange = dayChange;

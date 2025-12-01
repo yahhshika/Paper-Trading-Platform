@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { useTheme } from "../context/ThemeContext";
+import ShowChartIcon from "@mui/icons-material/ShowChart";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
 
 function Navbar() {
   const { theme, toggleTheme } = useTheme();
@@ -8,23 +11,33 @@ function Navbar() {
   return (
     <>
       <nav
-        className="navbar navbar-expand-lg border-bottom sticky-top"
-        style={{
-          background:
-            theme === "light"
-              ? "rgba(0,0,0,0.8)"
-              : "rgba(255,255,255,0.8)",
-        }}
+        className={`navbar navbar-expand-lg border-bottom sticky-top ${
+          theme === "light" ? "navbar-light-theme" : "navbar-dark-theme"
+        }`}
       >
         <div className="container-fluid mynav">
-          <Link
-            className="navbar-brand"
-            to={"/"}
-            style={{ color: theme === "light" ? "white" : "black" }}
-          >
-            <img src="media/images/logo.svg" className="w-25" alt="ZERODHA" />
+
+          {/* ========= LOGO ========= */}
+          <Link className="navbar-brand d-flex align-items-center" to="/">
+            <ShowChartIcon
+              style={{
+                fontSize: 32,
+                color: theme === "light" ? "#1565C0" : "#64B5F6",
+                marginRight: "8px",
+              }}
+            />
+            <span
+              className="brand-gradient"
+              style={{
+                fontSize: "26px",
+                fontWeight: 700,
+              }}
+            >
+              TradeGuru
+            </span>
           </Link>
 
+          {/* Mobile toggle button */}
           <button
             className="navbar-toggler"
             type="button"
@@ -34,86 +47,44 @@ function Navbar() {
             <span className="navbar-toggler-icon"></span>
           </button>
 
+          {/* ========= LINKS ========= */}
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <Link
-                  className="nav-link active"
-                  to="/signup"
-                  style={{ color: theme === "light" ? "white" : "black" }}
-                >
-                  Signup
-                </Link>
-              </li>
 
-              <li className="nav-item">
-                <Link
-                  className="nav-link active"
-                  to="/about"
-                  style={{ color: theme === "light" ? "white" : "black" }}
-                >
-                  About
-                </Link>
-              </li>
+            {/* ⭐ FIXED ALIGNMENT HERE ⭐ */}
+            <ul
+              className="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center"
+              style={{ gap: "25px" }}
+            >
+              {["signup", "about", "product", "support", "courses", "faq"].map(
+                (route) => (
+                  <li className="nav-item" key={route}>
+                    <Link className="nav-link nav-text" to={`/${route}`}>
+                      {route.charAt(0).toUpperCase() + route.slice(1)}
+                    </Link>
+                  </li>
+                )
+              )}
 
-              <li className="nav-item">
-                <Link
-                  className="nav-link active"
-                  to="/product"
-                  style={{ color: theme === "light" ? "white" : "black" }}
-                >
-                  Product
-                </Link>
-              </li>
+              {/* ========= THEME BUTTON ========= */}
+              <button
+  onClick={toggleTheme}
+  className="theme-toggle-btn ms-3"
+  style={{
+    background: "transparent",
+    border: "none",
+    cursor: "pointer",
+    padding: "4px",
+  }}
+>
+  {theme === "light" ? (
+    <DarkModeIcon style={{ color: "#111", fontSize: 24 }} />
+  ) : (
+    <LightModeIcon style={{ color: "#FFD740", fontSize: 24 }} />
+  )}
+</button>
 
-              <li className="nav-item">
-                <Link
-                  className="nav-link active"
-                  to="/pricing"
-                  style={{ color: theme === "light" ? "white" : "black" }}
-                >
-                  Pricing
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link
-                  className="nav-link active"
-                  to="/support"
-                  style={{ color: theme === "light" ? "white" : "black" }}
-                >
-                  Support
-                </Link>
-              </li>
-
-
-              <li className="nav-item">
-                <Link
-                  className="nav-link active"
-                  to="/Courses"
-                  style={{ color: theme === "light" ? "white" : "black" }}
-                >
-                  Learn
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link
-                  className="nav-link active"
-                  to="/FAQ"
-                  style={{ color: theme === "light" ? "white" : "black" }}
-                >
-                  FAQs
-                </Link>
-              </li>
             </ul>
 
-            <button
-              onClick={toggleTheme}
-              className="btn btn-outline-secondary ms-2"
-            >
-              {theme === "light" ? "Dark" : "Light"}
-            </button>
           </div>
         </div>
       </nav>

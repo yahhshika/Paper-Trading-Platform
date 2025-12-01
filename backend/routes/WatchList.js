@@ -3,8 +3,23 @@ const router = express.Router();
 const AllMarket = require("../models/AllMarketData");
 const Watchlist = require("../models/WatchList")
 const getId = require("../middlewares/users/getUserInfo")
-router.get("/",(req,res)=>{
-    res.send("root is working.")
+
+router.get("/",getId,async(req,res)=>{
+    if(!req.user._id){
+        res.status(400).json({error:"login/signup to add"})
+        return;
+    }
+    try{
+
+        let result = await Watchlist.find({ userId: req.user._id });
+        if(!result){
+            res.status(400).json({error:"no Watchlist data available"});
+            return;
+        }
+        res.json({message:"all WatchList data fetched", result})
+    }catch(err){
+        res.status(400).json({error:err.message})
+    }
 })
 
 router.get("/:symbol",getId,async(req,res)=>{

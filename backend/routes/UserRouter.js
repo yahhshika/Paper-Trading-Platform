@@ -6,9 +6,8 @@ const jwt = require('jsonwebtoken');
 const User = require("../models/User.js");
 const getId = require("../middlewares/users/getUserInfo.js")
 const SECRET_KEY = "yahhshika";
-router.get("/",(req,res)=>{
-    res.send("user router is working")
-} )
+
+
 
 // add a user: 
 router.post("/signup",[

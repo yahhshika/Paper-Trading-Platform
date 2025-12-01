@@ -1,3 +1,35 @@
-.footer-links:hover{
-    color:#387ed1 !important;
+/* REMOVE UNDERLINE FOR ALL FOOTER LINKS */
+.footer-links {
+  text-decoration: none !important;
+}
+
+.footer-links:hover {
+  text-decoration: none !important;
+}
+
+/* -----------------------------
+   Footer color logic
+------------------------------*/
+
+/* LIGHT THEME */
+.footer-light .footer-heading {
+  color: #000 !important;
+}
+
+.footer-light .footer-links {
+  color: #1a1a1a !important;   /* pure readable black */
+}
+
+/* DARK THEME */
+.footer-dark .footer-heading {
+  color: #fff !important;
+}
+
+.footer-dark .footer-links {
+  color: #ffffff !important;   /* pure white text */
+}
+
+/* Hover effect (same for both) */
+.footer-links:hover {
+  color: #387ed1 !important;   /* nice blue on hover */
 }
